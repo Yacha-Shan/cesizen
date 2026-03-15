@@ -4,12 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/info/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/info/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/parametre/index.css" afterDir="false" />
+    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="Modification des premiers mois. Encore que le début">
+      <change afterPath="$PROJECT_DIR$/public/css/accueil.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/logo_cesizen.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ProfileController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ChangePasswordType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ProfileFormType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Validator/PasswordStrength.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Validator/PasswordStrengthValidator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/gestion_compte/creer.html.twig.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/profile/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/info/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/info/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +35,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="PHP File" />
       </list>
     </option>
   </component>
@@ -47,6 +59,10 @@
     &quot;accountId&quot;: &quot;e1928301-df4f-49bb-a266-c64852304fed&quot;
   }
 }</component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="$PROJECT_DIR$/../../../../Program Files/PHP/php.exe">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
@@ -192,6 +208,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -220,6 +237,9 @@
       <recent name="C:\Users\yacha\PhpstormProjects\cesizen\templates\security" />
       <recent name="C:\Users\yacha\PhpstormProjects\cesizen" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yacha\PhpstormProjects\cesizen\public\images" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -239,10 +259,25 @@
       <workItem from="1765205828891" duration="728000" />
       <workItem from="1768308500440" duration="30176000" />
       <workItem from="1773059954652" duration="13512000" />
+      <workItem from="1773226673029" duration="17963000" />
+      <workItem from="1773321964261" duration="37821000" />
     </task>
+    <task id="LOCAL-00001" summary="Modification des premiers mois. Encore que le début">
+      <option name="closed" value="true" />
+      <created>1773226926347</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1773226926347</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Modification des premiers mois. Encore que le début" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modification des premiers mois. Encore que le début" />
   </component>
 </project>

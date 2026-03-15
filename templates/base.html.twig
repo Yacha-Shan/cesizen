@@ -1,17 +1,103 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+</head>
+<body>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+{# Overlay #}
+<div class="menu-overlay" id="menu-overlay" onclick="fermerMenu()"></div>
+
+{# Sidebar #}
+<nav class="menu-sidebar" id="menu-sidebar">
+    <div class="menu-nav">
+        <a href="{{ path('app_info') }}">
+            <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.707 11.293l-8-8a1 1 0 0 0-1.414 0l-8 8a1 1 0 0 0 1.414 1.414L5 12.414V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7.586l.293.293a1 1 0 0 0 1.414-1.414zM13 19h-2v-4h2v4zm4 0h-2v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5H7v-8.586l5-5 5 5V19z"/>
+            </svg>
+            Accueil
+        </a>
+        <a href="{{ path('app_exercice') }}">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            Exercice respiration
+        </a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('app_gestion_compte') }}">
+                <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.474 19.013a8.941 8.941 0 0 0-4.115-4.89 6 6 0 1 0-8.717 0 8.941 8.941 0 0 0-4.115 4.89 11.065 11.065 0 0 0 1.63 1.59 6.965 6.965 0 0 1 4.728-5.275 1 1 0 0 0 .181-1.829 4 4 0 1 1 3.871 0 1 1 0 0 0 .181 1.829 6.965 6.965 0 0 1 4.726 5.272 11.059 11.059 0 0 0 1.63-1.587z"/>
+                </svg>
+                Gestion des comptes
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="menu-footer">
+        {% if is_granted('ROLE_ADMIN', 'ROLE_USER') %}
+            <a href="{{ path('app_parametre_index') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+                Paramètre
+            </a>
+            <a href="{{ path('app_logout') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                Déconnexion
+            </a>
+        {% endif %}
+        {% if not app.user %}
+            <a href="{{ path('app_login') }}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                Connexion
+            </a>
+        {% endif %}
+    </div>
+</nav>
+
+{# Bouton hamburger #}
+<button class="menu-toggle" id="menu-toggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+{# Contenu de la page #}
+<div class="page-content">
+    {% block body %}{% endblock %}
+</div>
+
+<script>
+    function toggleMenu() {
+        const sidebar = document.getElementById('menu-sidebar');
+        const overlay = document.getElementById('menu-overlay');
+        const toggle = document.getElementById('menu-toggle');
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('visible');
+        toggle.classList.toggle('open');
+    }
+
+    function fermerMenu() {
+        document.getElementById('menu-sidebar').classList.remove('open');
+        document.getElementById('menu-overlay').classList.remove('visible');
+        document.getElementById('menu-toggle').classList.remove('open');
+    }
+</script>
+</body>
 </html>

@@ -1,7 +1,7 @@
 .accueil-wrapper {
-    max-width: 700px;
-    margin: 2rem auto;
-    padding: 0 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 3rem;
     font-family: sans-serif;
 }
 
@@ -9,46 +9,46 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .accueil-logo {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 26px;
+    gap: 0.75rem;
+    font-size: 52px;
     font-weight: 700;
 }
 
 .accueil-logo span.cesi {
-    color: #2d6a4a;
+    color: #02C466;
 }
 
 .accueil-logo span.zen {
-    color: #f59e0b;
+    color: #FFDF54;
 }
 
-.accueil-logo svg {
-    width: 36px;
-    height: 36px;
-    color: #2d6a4a;
+.accueil-logo img {
+    width: 95px;
+    height: 75px;
 }
 
 .btn-ajouter-article {
     background: #f59e0b;
     color: #fff;
     border: none;
-    border-radius: 8px;
-    width: 36px;
-    height: 36px;
+    border-radius: 10px;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 600;
     text-decoration: none;
     line-height: 1;
     flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
 }
 
 .btn-ajouter-article:hover {
@@ -58,30 +58,35 @@
 
 .article-card {
     background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 16px;
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 1.25rem;
+    border: 1.5px solid #f0c060;
+    border-radius: 20px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
     position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .article-card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .article-titre {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
-    color: #111;
+    color: #1a3a2a;
     margin: 0;
 }
 
 .article-actions {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.75rem;
     flex-shrink: 0;
 }
 
@@ -102,15 +107,16 @@
 }
 
 .article-actions svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 .article-contenu {
     font-size: 14px;
-    color: #666;
-    margin: 0 0 1rem;
+    color: #888;
+    margin: 0 0 1rem 0.5rem;
     line-height: 1.6;
+    flex: 1;
 }
 
 .article-footer {
@@ -121,12 +127,11 @@
 .lien-voir-plus {
     font-size: 13px;
     color: #aaa;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .lien-voir-plus:hover {
     color: #2d6a4a;
-    text-decoration: underline;
 }
 
 .aucun-article {
