@@ -42,7 +42,7 @@
     </div>
 
     <div class="menu-footer">
-        {% if is_granted('ROLE_ADMIN', 'ROLE_USER') %}
+        {% if is_granted('ROLE_USER') %}
             <a href="{{ path('app_parametre_index') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
