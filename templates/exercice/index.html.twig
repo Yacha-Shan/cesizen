@@ -1,0 +1,331 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercices de respiration{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        * { box-sizing: border-box; }
+
+        .exercice-wrapper {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            font-family: sans-serif;
+        }
+
+        .exercice-title {
+            font-size: 22px;
+            font-weight: 500;
+            color: #111;
+            margin-bottom: 2rem;
+        }
+
+        .exercice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .exercice-card {
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+
+        .exercice-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .exercice-card.active {
+            border-color: var(--card-color);
+            box-shadow: 0 0 0 2px var(--card-color);
+        }
+
+        .card-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .card-nom {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111;
+            margin: 0.5rem 0 0.25rem;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #888;
+            margin: 0;
+        }
+
+        .card-meta {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 0.75rem;
+        }
+
+        .exercice-panel {
+            display: none;
+            background: #fff;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .exercice-panel.visible {
+            display: block;
+        }
+
+        .panel-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 0.25rem;
+        }
+
+        .panel-desc {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .cercle-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .cercle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .cercle-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .cercle-secondes {
+            font-size: 28px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .cercle-anneau {
+            position: absolute;
+            top: -8px; left: -8px;
+            width: calc(100% + 16px);
+            height: calc(100% + 16px);
+            border-radius: 50%;
+        }
+
+        .cycle-info {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-start {
+            padding: 10px 28px;
+            border-radius: 8px;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            color: #fff;
+            margin: 0 6px;
+        }
+
+        .btn-stop {
+            padding: 10px 28px;
+            border-radius: 8px;
+            border: 1px solid #d1d5db;
+            font-size: 15px;
+            cursor: pointer;
+            background: #fff;
+            color: #111;
+            margin: 0 6px;
+            display: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="exercice-wrapper">
+
+        <p class="exercice-title">Exercices de respiration</p>
+
+        <div class="exercice-grid">
+            {% for exercice in exercices %}
+                <div class="exercice-card"
+                     style="--card-color: {{ exercice.couleur }}"
+                     onclick="selectionner({{ loop.index0 }})">
+                    <span class="card-dot" style="background: {{ exercice.couleur }}"></span>
+                    <p class="card-nom">{{ exercice.nom }}</p>
+                    <p class="card-desc">{{ exercice.description }}</p>
+                    <p class="card-meta">{{ exercice.cycles }} cycles
+                        · {{ exercice.etapes|map(e => e.duree)|reduce((carry, v) => carry + v, 0) }}s par cycle</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="exercice-panel" id="panel">
+            <p class="panel-title" id="panel-titre"></p>
+            <p class="panel-desc" id="panel-desc"></p>
+
+            <div class="cercle-wrapper">
+                <div class="cercle" id="cercle">
+                    <svg class="cercle-anneau" id="svg-anneau" viewBox="0 0 184 184">
+                        <circle cx="92" cy="92" r="88" fill="none" stroke="#e5e5e5" stroke-width="4"/>
+                        <circle id="arc" cx="92" cy="92" r="88" fill="none" stroke-width="4"
+                                stroke-linecap="round" stroke-dasharray="553" stroke-dashoffset="553"
+                                transform="rotate(-90 92 92)"/>
+                    </svg>
+                    <span class="cercle-label" id="cercle-label">Prêt</span>
+                    <span class="cercle-secondes" id="cercle-secondes"></span>
+                </div>
+            </div>
+
+            <p class="cycle-info" id="cycle-info"></p>
+
+            <button class="btn-start" id="btn-start" onclick="demarrer()">Démarrer</button>
+            <button class="btn-stop" id="btn-stop" onclick="arreter()">Arrêter</button>
+        </div>
+
+    </div>
+
+    <script>
+        const exercices = {{ exercices|json_encode|raw }};
+        let indexActif = null;
+        let intervalId = null;
+        let cycleActuel = 0;
+        let etapeActuelle = 0;
+        let secondesRestantes = 0;
+
+        function selectionner(index) {
+            arreter();
+            indexActif = index;
+            const ex = exercices[index];
+
+            document.querySelectorAll('.exercice-card').forEach((c, i) => {
+                c.classList.toggle('active', i === index);
+            });
+
+            document.getElementById('panel-titre').textContent = ex.nom;
+            document.getElementById('panel-desc').textContent = ex.description;
+            document.getElementById('cercle-label').textContent = 'Prêt';
+            document.getElementById('cercle-secondes').textContent = '';
+            document.getElementById('cycle-info').textContent = `0 / ${ex.cycles} cycles`;
+            document.getElementById('arc').style.stroke = ex.couleur;
+            document.getElementById('arc').style.transition = 'none';
+            document.getElementById('arc').style.strokeDashoffset = '553';
+            document.getElementById('cercle').style.borderColor = '#e5e5e5';
+            document.getElementById('btn-start').style.background = ex.couleur;
+            document.getElementById('btn-start').style.display = 'inline-block';
+            document.getElementById('btn-start').textContent = 'Démarrer';
+            document.getElementById('btn-stop').style.display = 'none';
+
+            document.getElementById('panel').classList.add('visible');
+            document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function demarrer() {
+            if (indexActif === null) return;
+            cycleActuel = 0;
+            etapeActuelle = 0;
+            document.getElementById('btn-start').style.display = 'none';
+            document.getElementById('btn-stop').style.display = 'inline-block';
+            lancerEtape();
+        }
+
+        function lancerEtape() {
+            const ex = exercices[indexActif];
+
+            if (cycleActuel >= ex.cycles) {
+                terminer();
+                return;
+            }
+
+            const etape = ex.etapes[etapeActuelle];
+            secondesRestantes = etape.duree;
+
+            document.getElementById('cercle-label').textContent = etape.label;
+            document.getElementById('cycle-info').textContent = `Cycle ${cycleActuel + 1} / ${ex.cycles}`;
+
+            // Réinitialise l'arc instantanément sans transition
+            const arc = document.getElementById('arc');
+            arc.style.transition = 'none';
+            arc.style.strokeDashoffset = '553';
+
+            // Force le reflow pour que la réinitialisation soit prise en compte
+            arc.getBoundingClientRect();
+
+            // Lance la transition fluide sur toute la durée de l'étape
+            arc.style.transition = `stroke-dashoffset ${etape.duree}s linear`;
+            arc.style.strokeDashoffset = '0';
+
+            // Met à jour le compteur de secondes chaque seconde
+            document.getElementById('cercle-secondes').textContent = secondesRestantes + 's';
+            intervalId = setInterval(() => {
+                secondesRestantes--;
+                document.getElementById('cercle-secondes').textContent = secondesRestantes > 0 ? secondesRestantes + 's' : '';
+
+                if (secondesRestantes <= 0) {
+                    clearInterval(intervalId);
+                    etapeActuelle++;
+                    if (etapeActuelle >= ex.etapes.length) {
+                        etapeActuelle = 0;
+                        cycleActuel++;
+                    }
+                    lancerEtape();
+                }
+            }, 1000);
+        }
+
+        function arreter() {
+            clearInterval(intervalId);
+            intervalId = null;
+            const arc = document.getElementById('arc');
+            arc.style.transition = 'none';
+            arc.style.strokeDashoffset = '553';
+            document.getElementById('btn-start').style.display = 'inline-block';
+            document.getElementById('btn-stop').style.display = 'none';
+            document.getElementById('cercle-label').textContent = 'Prêt';
+            document.getElementById('cercle-secondes').textContent = '';
+            if (indexActif !== null) {
+                document.getElementById('cycle-info').textContent = `0 / ${exercices[indexActif].cycles} cycles`;
+            }
+        }
+
+        function terminer() {
+            clearInterval(intervalId);
+            intervalId = null;
+            const arc = document.getElementById('arc');
+            arc.style.transition = 'none';
+            arc.style.strokeDashoffset = '0';
+            document.getElementById('cercle-label').textContent = '✓ Terminé';
+            document.getElementById('cercle-secondes').textContent = '';
+            document.getElementById('btn-stop').style.display = 'none';
+            document.getElementById('btn-start').style.display = 'inline-block';
+            document.getElementById('btn-start').textContent = 'Recommencer';
+            document.getElementById('cycle-info').textContent = `${exercices[indexActif].cycles} / ${exercices[indexActif].cycles} cycles ✓`;
+        }
+    </script>
+{% endblock %}

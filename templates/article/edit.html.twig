@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Article{% endblock %}
+
+{% block body %}
+    <h1>Edit Article</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.content) }}
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+    {{ form_end(form) }}
+
+    <button class="btn btn-danger">
+        <a href="{{ path('app_article_delete', {id: article.id}) }}" class="btn btn-sm btn-outline-success">
+            Supprimer
+        </a>
+    </button>
+
+    <button class="btn btn-primary">
+        <a href="{{ path('app_info') }}" class="btn btn-primary">Accueil</a>
+    </button>
+    <button class="btn btn-primary">
+        <a href="{{ path('app_exercice') }}" class="btn btn-primary">Exercice respiration</a>
+    </button>
+    <button class="btn btn-primary">
+        <a href="{{ path('app_gestion_compte') }}" class="btn btn-primary">Gestion des comptes</a>
+    </button>
+    <button class="btn btn-primary">
+        <a href="{{ path('app_parametre_index') }}" class="btn btn-primary">Paramètres</a>
+    </button>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('app_logout') }}" class="btn btn-secondary">Deconnexion</a>
+    {% endif %}
+
+{% endblock %}
