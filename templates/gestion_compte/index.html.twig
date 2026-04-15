@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des comptes{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/gestion_compte.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="gestion-wrapper">
+
+        <div class="gestion-header">
+            <div class="accueil-logo">
+                <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
+
+        <p class="gestion-title">Les différents utilisateurs :</p>
+
+        {% for message in app.flashes('success') %}
+            <div class="flash-success">{{ message }}</div>
+        {% endfor %}
+
+        <div class="gestion-grid">
+
+            <div class="gestion-card">
+                <p class="gestion-card-title">Comptes utilisateurs :</p>
+                <div class="btn-ajouter">
+                    <a href="{{ path('app_gestion_compte_creer', {'role': 'user'}) }}" title="Ajouter un utilisateur">+</a>
+                </div>
+                {% for user in utilisateurs %}
+                    <div class="user-item {{ not user.isActive ? 'inactif' }}">
+                        <p class="user-nom">{{ user.firstname }} {{ user.lastname }}</p>
+                        <div class="user-actions">
+                            <a href="{{ path('app_gestion_compte_desactiver', {'id': user.id}) }}"
+                               class="{{ user.isActive ? 'desactiver-actif' : 'desactiver-inactif' }}">
+                                {{ user.isActive ? 'Désactiver' : 'Activer' }}
+                            </a>
+                            <a href="{{ path('app_gestion_compte_supprimer', {'id': user.id}) }}"
+                               class="supprimer"
+                               onclick="return confirm('Supprimer ce compte ?')">
+                                Supprimer
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <p style="font-size:13px;color:#aaa;text-align:center;">Aucun utilisateur</p>
+                {% endfor %}
+            </div>
+
+            <div class="gestion-card">
+                <p class="gestion-card-title">Comptes administrateurs :</p>
+                <div class="btn-ajouter">
+                    <a href="{{ path('app_gestion_compte_creer', {'role': 'admin'}) }}" title="Ajouter un administrateur">+</a>
+                </div>
+                {% for user in administrateurs %}
+                    <div class="user-item {{ not user.isActive ? 'inactif' }}">
+                        <p class="user-nom">{{ user.firstname }} {{ user.lastname }}</p>
+                        <div class="user-actions">
+                            <a href="{{ path('app_gestion_compte_desactiver', {'id': user.id}) }}"
+                               class="{{ user.isActive ? 'desactiver-actif' : 'desactiver-inactif' }}">
+                                {{ user.isActive ? 'Désactiver' : 'Activer' }}
+                            </a>
+                            <a href="{{ path('app_gestion_compte_supprimer', {'id': user.id}) }}"
+                               class="supprimer"
+                               onclick="return confirm('Supprimer ce compte ?')">
+                                Supprimer
+                            </a>
+                        </div>
+                    </div>
+                {% else %}
+                    <p style="font-size:13px;color:#aaa;text-align:center;">Aucun administrateur</p>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercices de respiration{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/exercice.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="exercice-wrapper">
+
+        <div class="exercice-header">
+            <div class="accueil-logo">
+                <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
+
+        <p class="exercice-title">Exercices de respiration</p>
+
+        <div class="exercice-grid">
+            {% for exercice in exercices %}
+                <div class="exercice-card"
+                     style="--card-color: {{ exercice.couleur }}"
+                     onclick="selectionner({{ loop.index0 }})">
+                    <span class="card-dot" style="background: {{ exercice.couleur }}"></span>
+                    <p class="card-nom">{{ exercice.nom }}</p>
+                    <p class="card-desc">{{ exercice.description }}</p>
+                    <p class="card-meta">{{ exercice.cycles }} cycles
+                        · {{ exercice.etapes|map(e => e.duree)|reduce((carry, v) => carry + v, 0) }}s par cycle</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="exercice-panel" id="panel">
+            <p class="panel-title" id="panel-titre"></p>
+            <p class="panel-desc" id="panel-desc"></p>
+
+            <div class="cercle-wrapper">
+                <div class="cercle" id="cercle">
+                    <svg class="cercle-anneau" id="svg-anneau" viewBox="0 0 184 184">
+                        <circle cx="92" cy="92" r="88" fill="none" stroke="#e5e5e5" stroke-width="4"/>
+                        <circle id="arc" cx="92" cy="92" r="88" fill="none" stroke-width="4"
+                                stroke-linecap="round" stroke-dasharray="553" stroke-dashoffset="553"
+                                transform="rotate(-90 92 92)"/>
+                    </svg>
+                    <span class="cercle-label" id="cercle-label">Prêt</span>
+                    <span class="cercle-secondes" id="cercle-secondes"></span>
+                </div>
+            </div>
+
+            <p class="cycle-info" id="cycle-info"></p>
+
+            <button class="btn-start" id="btn-start" onclick="demarrer()">Démarrer</button>
+            <button class="btn-stop" id="btn-stop" onclick="arreter()">Arrêter</button>
+        </div>
+
+    </div>
+
+    <script>
+        const exercices = {{ exercices|json_encode|raw }};
+        let indexActif = null;
+        let intervalId = null;
+        let cycleActuel = 0;
+        let etapeActuelle = 0;
+        let secondesRestantes = 0;
+
+        function selectionner(index) {
+            arreter();
+            indexActif = index;
+            const ex = exercices[index];
+
+            document.querySelectorAll('.exercice-card').forEach((c, i) => {
+                c.classList.toggle('active', i === index);
+            });
+
+            document.getElementById('panel-titre').textContent = ex.nom;
+            document.getElementById('panel-desc').textContent = ex.description;
+            document.getElementById('cercle-label').textContent = 'Prêt';
+            document.getElementById('cercle-secondes').textContent = '';
+            document.getElementById('cycle-info').textContent = `0 / ${ex.cycles} cycles`;
+            document.getElementById('arc').style.stroke = ex.couleur;
+            document.getElementById('arc').style.transition = 'none';
+            document.getElementById('arc').style.strokeDashoffset = '553';
+            document.getElementById('cercle').style.borderColor = '#e5e5e5';
+            document.getElementById('btn-start').style.background = ex.couleur;
+            document.getElementById('btn-start').style.display = 'inline-block';
+            document.getElementById('btn-start').textContent = 'Démarrer';
+            document.getElementById('btn-stop').style.display = 'none';
+
+            document.getElementById('panel').classList.add('visible');
+            document.getElementById('panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function demarrer() {
+            if (indexActif === null) return;
+            cycleActuel = 0;
+            etapeActuelle = 0;
+            document.getElementById('btn-start').style.display = 'none';
+            document.getElementById('btn-stop').style.display = 'inline-block';
+            lancerEtape();
+        }
+
+        function lancerEtape() {
+            const ex = exercices[indexActif];
+
+            if (cycleActuel >= ex.cycles) {
+                terminer();
+                return;
+            }
+
+            const etape = ex.etapes[etapeActuelle];
+            secondesRestantes = etape.duree;
+
+            document.getElementById('cercle-label').textContent = etape.label;
+            document.getElementById('cycle-info').textContent = `Cycle ${cycleActuel + 1} / ${ex.cycles}`;
+
+            const arc = document.getElementById('arc');
+            arc.style.transition = 'none';
+            arc.style.strokeDashoffset = '553';
+            arc.getBoundingClientRect();
+            arc.style.transition = `stroke-dashoffset ${etape.duree}s linear`;
+            arc.style.strokeDashoffset = '0';
+
+            document.getElementById('cercle-secondes').textContent = secondesRestantes + 's';
+            intervalId = setInterval(() => {
+                secondesRestantes--;
+                document.getElementById('cercle-secondes').textContent = secondesRestantes > 0 ? secondesRestantes + 's' : '';
+
+                if (secondesRestantes <= 0) {
+                    clearInterval(intervalId);
+                    etapeActuelle++;
+                    if (etapeActuelle >= ex.etapes.length) {
+                        etapeActuelle = 0;
+                        cycleActuel++;
+                    }
+                    lancerEtape();
+                }
+            }, 1000);
+        }
+
+        function arreter() {
+            clearInterval(intervalId);
+            intervalId = null;
+            const arc = document.getElementById('arc');
+            arc.style.transition = 'none';
+            arc.style.strokeDashoffset = '553';
+            document.getElementById('btn-start').style.display = 'inline-block';
+            document.getElementById('btn-stop').style.display = 'none';
+            document.getElementById('cercle-label').textContent = 'Prêt';
+            document.getElementById('cercle-secondes').textContent = '';
+            if (indexActif !== null) {
+                document.getElementById('cycle-info').textContent = `0 / ${exercices[indexActif].cycles} cycles`;
+            }
+        }
+
+        function terminer() {
+            clearInterval(intervalId);
+            intervalId = null;
+            const arc = document.getElementById('arc');
+            arc.style.transition = 'none';
+            arc.style.strokeDashoffset = '0';
+            document.getElementById('cercle-label').textContent = '✓ Terminé';
+            document.getElementById('cercle-secondes').textContent = '';
+            document.getElementById('btn-stop').style.display = 'none';
+            document.getElementById('btn-start').style.display = 'inline-block';
+            document.getElementById('btn-start').textContent = 'Recommencer';
+            document.getElementById('cycle-info').textContent = `${exercices[indexActif].cycles} / ${exercices[indexActif].cycles} cycles ✓`;
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/parametre.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="profile-wrapper">
+
+        <div class="profile-header">
+            <div class="accueil-logo">
+                <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
+
+        {% for message in app.flashes('success') %}
+            <div class="flash-success">{{ message }}</div>
+        {% endfor %}
+
+        {{ form_start(profileForm, {'attr': {'enctype': 'multipart/form-data'}}) }}
+
+        <div class="profile-card">
+            <p class="card-section-label">Photo de profil</p>
+            <div class="avatar-row">
+                <div class="avatar-circle" id="avatar-preview">
+                    {% if user.avatar %}
+                        <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" alt="Photo de profil">
+                    {% else %}
+                        {{ user.firstname|first|upper }}{{ user.lastname|first|upper }}
+                    {% endif %}
+                </div>
+                <div>
+                    <label for="{{ profileForm.avatarFile.vars.id }}" class="avatar-upload-btn">
+                        Choisir une photo
+                    </label>
+                    <div style="display: none;">
+                        {{ form_widget(profileForm.avatarFile) }}
+                    </div>
+                    <p class="avatar-hint" id="file-label">JPG, PNG ou WEBP — max 2 Mo</p>
+                    {% for error in profileForm.avatarFile.vars.errors %}
+                        <p style="color: red; font-size: 12px; margin: 4px 0 0;">{{ error.message }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <p class="card-section-label">Informations</p>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    {{ form_label(profileForm.firstname, 'Prénom') }}
+                    {{ form_widget(profileForm.firstname) }}
+                    {% for error in profileForm.firstname.vars.errors %}
+                        <p style="color: red; font-size: 12px; margin: 4px 0 0;">{{ error.message }}</p>
+                    {% endfor %}
+                </div>
+                <div class="form-group">
+                    {{ form_label(profileForm.lastname, 'Nom') }}
+                    {{ form_widget(profileForm.lastname) }}
+                    {% for error in profileForm.lastname.vars.errors %}
+                        <p style="color: red; font-size: 12px; margin: 4px 0 0;">{{ error.message }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_label(profileForm.username, 'Pseudo') }}
+                {{ form_widget(profileForm.username) }}
+                {% for error in profileForm.username.vars.errors %}
+                    <p style="color: red; font-size: 12px; margin: 4px 0 0;">{{ error.message }}</p>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" value="{{ user.email }}" disabled>
+                <p class="field-hint">L'email ne peut pas être modifié.</p>
+            </div>
+
+            <a href="{{ path('app_parametre_edit_password') }}" class="btn btn-warning">
+                Modifier le mot de passe
+            </a>
+
+            <div class="form-footer">
+                <button type="submit" class="btn-save">Sauvegarder</button>
+            </div>
+        </div>
+
+        {{ form_end(profileForm) }}
+
+    </div>
+
+    <script>
+        const input = document.getElementById('{{ profileForm.avatarFile.vars.id }}');
+        const preview = document.getElementById('avatar-preview');
+        const label = document.getElementById('file-label');
+
+        input.addEventListener('change', function () {
+            const file = this.files[0];
+            if (!file) return;
+            if (file.size > 2 * 1024 * 1024) {
+                label.textContent = 'Fichier trop volumineux (max 2 Mo)';
+                label.style.color = 'red';
+                return;
+            }
+            label.textContent = file.name;
+            label.style.color = '#999';
+            const reader = new FileReader();
+            reader.onload = e => {
+                preview.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;">';
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+{% endblock %}

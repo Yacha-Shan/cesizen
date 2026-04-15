@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body:has(.register-page) .navbar,
+body:has(.register-page) nav,
+body:has(.register-page) header {
+    display: none;
+}
+
+.register-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 2rem 1rem;
+    font-family: sans-serif;
+    background-color: #F4F9F6;
+    box-sizing: border-box;
+}
+
+.register-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.register-logo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.register-logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.register-logo-text span.cesi {
+    color: #02C466;
+}
+
+.register-logo-text span.zen {
+    color: #FFDF54;
+}
+
+.register-card {
+    background: #d8f0e8;
+    border-radius: 20px;
+    padding: 3rem 3.5rem;
+    width: 100%;
+    max-width: 580px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a3a2a;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+
+.register-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1.5px solid #b0d8c4;
+    border-radius: 50px;
+    font-size: 15px;
+    color: #333;
+    background: #fff;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.register-input::placeholder {
+    color: #aaa;
+}
+
+.register-input:focus {
+    border-color: #02C466;
+}
+
+.register-hint {
+    font-size: 12px;
+    color: #5a7a65;
+    margin: 6px 0 0 8px;
+}
+
+.register-error {
+    font-size: 12px;
+    color: #dc2626;
+    margin: 4px 0 0 8px;
+}
+
+.form-group-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    font-size: 13px;
+    color: #1a3a2a;
+}
+
+.form-group-check input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #02C466;
+    flex-shrink: 0;
+}
+
+.btn-inscription {
+    width: 60%;
+    padding: 14px;
+    background: #02C466;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0 auto 1rem;
+    transition: background 0.2s;
+    display: block;
+    text-align: center;
+}
+
+.btn-inscription:hover {
+    background: #01a855;
+}
+
+.lien-retour {
+    font-size: 13px;
+    color: #f59e0b;
+    text-decoration: underline;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.lien-retour:hover {
+    color: #d97706;
+}
+
+@media (max-width: 600px) {
+    .register-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .btn-inscription {
+        width: 80%;
+    }
+}

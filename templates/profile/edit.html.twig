@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+    <h1>Mon profil</h1>
+
+    {% for message in app.flashes('success') %}
+        <div style="color: green;">{{ message }}</div>
+    {% endfor %}
+
+    {% if user.avatar %}
+        <img src="{{ asset('uploads/avatars/' ~ user.avatar) }}" alt="Photo de profil" width="100">
+    {% else %}
+        <p>Aucune photo de profil.</p>
+    {% endif %}
+
+    {{ form_start(profileForm, {'attr': {'enctype': 'multipart/form-data'}}) }}
+    {{ form_row(profileForm.firstname) }}
+    {{ form_row(profileForm.lastname) }}
+    {{ form_row(profileForm.username) }}
+    {{ form_row(profileForm.avatarFile) }}
+
+    <button type="submit" class="btn">Sauvegarder</button>
+    {{ form_end(profileForm) }}
+{% endblock %}

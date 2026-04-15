@@ -1,0 +1,146 @@
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #F4F9F6;
+}
+
+.login-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.login-logo img {
+    width: 100px;
+    height: auto;
+    margin-bottom: 0.5rem;
+}
+
+.login-logo-text {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.login-logo-text span.cesi {
+    color: #02C466;
+}
+
+.login-logo-text span.zen {
+    color: #FFDF54;
+}
+
+.login-card {
+    background: #d8f0e8;
+    border-radius: 20px;
+    padding: 3rem 3.5rem;
+    width: 100%;
+    max-width: 580px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a3a2a;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.login-input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 1.5px solid #b0d8c4;
+    border-radius: 50px;
+    font-size: 15px;
+    color: #333;
+    background: #fff;
+    margin-bottom: 1.25rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.login-input::placeholder {
+    color: #aaa;
+}
+
+.login-input:focus {
+    border-color: #02C466;
+}
+
+.btn-connexion {
+    width: 50%;
+    padding: 14px;
+    background: #02C466;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background 0.2s;
+}
+
+.btn-connexion:hover {
+    background: #01a855;
+}
+
+.lien-mot-de-passe {
+    font-size: 13px;
+    color: #f59e0b;
+    text-decoration: underline;
+    margin-bottom: 1.25rem;
+    cursor: pointer;
+}
+
+.btn-creer-compte {
+    padding: 12px 32px;
+    background: #f59e0b;
+    color: #1a3a2a;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-creer-compte:hover {
+    background: #d97706;
+    color: #fff;
+}
+
+.alert-danger {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Neutralise les marges du body et du conteneur parent injecté par base.html.twig */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body:has(.login-page) .navbar,
+body:has(.login-page) nav,
+body:has(.login-page) header {
+    display: none;
+}

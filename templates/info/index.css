@@ -1,0 +1,142 @@
+.accueil-wrapper {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: sans-serif;
+}
+
+.accueil-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.accueil-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.accueil-logo span.cesi {
+    color: #2d6a4a;
+}
+
+.accueil-logo span.zen {
+    color: #f59e0b;
+}
+
+.accueil-logo svg {
+    width: 36px;
+    height: 36px;
+    color: #2d6a4a;
+}
+
+.btn-ajouter-article {
+    background: #f59e0b;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.btn-ajouter-article:hover {
+    background: #d97706;
+    color: #fff;
+}
+
+.article-card {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+
+.article-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.article-titre {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111;
+    margin: 0;
+}
+
+.article-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.article-actions a,
+.article-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    color: #f59e0b;
+    display: flex;
+    align-items: center;
+}
+
+.article-actions a:hover,
+.article-actions button:hover {
+    color: #d97706;
+}
+
+.article-actions svg {
+    width: 20px;
+    height: 20px;
+}
+
+.article-contenu {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 1rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.lien-voir-plus {
+    font-size: 13px;
+    color: #aaa;
+    text-decoration: none;
+}
+
+.lien-voir-plus:hover {
+    color: #2d6a4a;
+    text-decoration: underline;
+}
+
+.aucun-article {
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+    padding: 2rem 0;
+}

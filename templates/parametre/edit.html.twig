@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le mot de passe{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/edit_password.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="password-wrapper">
+
+        <div class="password-header">
+            <div class="accueil-logo">
+                <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
+
+        <p class="password-title">Modifier le mot de passe</p>
+
+        {% for message in app.flashes('error') %}
+            <div class="flash-error">{{ message }}</div>
+        {% endfor %}
+        {% for message in app.flashes('success') %}
+            <div class="flash-success">{{ message }}</div>
+        {% endfor %}
+
+        <div class="password-card">
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_label(form.currentPassword, 'Mot de passe actuel') }}
+                {{ form_widget(form.currentPassword, {'attr': {'class': 'form-input'}}) }}
+                {{ form_errors(form.currentPassword) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.newPassword.first, 'Nouveau mot de passe') }}
+                {{ form_widget(form.newPassword.first, {'attr': {'class': 'form-input'}}) }}
+                {{ form_errors(form.newPassword.first) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.newPassword.second, 'Confirmer le nouveau mot de passe') }}
+                {{ form_widget(form.newPassword.second, {'attr': {'class': 'form-input'}}) }}
+                {{ form_errors(form.newPassword.second) }}
+            </div>
+
+            <div class="form-footer">
+                <a href="{{ path('app_parametre_index') }}" class="btn-cancel">Annuler</a>
+                <button type="submit" class="btn-save">Modifier le mot de passe</button>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,235 @@
+/* ============================= */
+/*        STRUCTURE GÉNÉRALE     */
+/* ============================= */
+.accueil-wrapper {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem 3rem;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+/* ============================= */
+/*            HEADER             */
+/* ============================= */
+.accueil-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.accueil-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 52px;
+    font-weight: 700;
+}
+
+.accueil-logo span.cesi {
+    color: #02C466;
+}
+
+.accueil-logo span.zen {
+    color: #FFDF54;
+}
+
+.accueil-logo img,
+.accueil-logo svg {
+    width: 95px;
+    height: 75px;
+}
+
+/* ============================= */
+/*        BOUTON AJOUTER         */
+/* ============================= */
+.btn-ajouter-article {
+    background: #f59e0b;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+}
+
+.btn-ajouter-article:hover {
+    background: #d97706;
+    color: #fff;
+}
+
+/* ============================= */
+/*         CARTE ARTICLE         */
+/* ============================= */
+.article-card {
+    background: #fff;
+    border: 1.5px solid #f0c060;
+    border-radius: 20px;
+    padding: 1.75rem 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.article-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+}
+
+.article-titre {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a3a2a;
+    margin: 0;
+}
+
+.article-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.article-actions a,
+.article-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
+    color: #f59e0b;
+    display: flex;
+    align-items: center;
+}
+
+.article-actions a:hover,
+.article-actions button:hover {
+    color: #d97706;
+}
+
+.article-actions svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* ============================= */
+/*        CONTENU ARTICLE        */
+/* ============================= */
+.article-contenu {
+    font-size: 14px;
+    color: #666;
+    margin: 0 0 1rem 0.5rem;
+    line-height: 1.6;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.lien-voir-plus {
+    font-size: 13px;
+    color: #aaa;
+    text-decoration: underline;
+}
+
+.lien-voir-plus:hover {
+    color: #2d6a4a;
+}
+
+/* ============================= */
+/*        ÉTAT VIDE              */
+/* ============================= */
+.aucun-article {
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+/* ============================= */
+/*          RESPONSIVE           */
+/* ============================= */
+@media (max-width: 768px) {
+    .accueil-wrapper {
+        margin: 1rem 0;
+        padding: 0 0.75rem;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .accueil-header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        position: relative;
+        text-align: center;
+        width: 100%;
+    }
+
+    .accueil-logo {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        gap: 0.5rem;
+        max-width: 100%;
+    }
+
+    .accueil-logo img,
+    .accueil-logo svg {
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+    }
+
+    .accueil-logo span {
+        white-space: nowrap;
+    }
+
+    .btn-ajouter-article {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+
+    .article-card {
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+
+    .article-titre {
+        font-size: 20px;
+    }
+
+    .article-actions svg {
+        width: 20px;
+        height: 20px;
+    }
+}

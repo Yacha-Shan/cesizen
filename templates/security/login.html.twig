@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion - CesiZen{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="login-page">
+        <div class="login-logo">
+            <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo CesiZen">
+            <div class="login-logo-text">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
+
+        <div class="login-card">
+
+            <p class="login-title">Se connecter</p>
+
+            {% if error %}
+                <div class="alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <form method="post" style="width:100%;display:flex;flex-direction:column;align-items:center;">
+
+                <input type="email"
+                       value="{{ last_username }}"
+                       name="email"
+                       id="inputEmail"
+                       class="login-input"
+                       placeholder="Veuillez entrer votre adresse e-mail"
+                       autocomplete="email"
+                       required
+                       autofocus>
+
+                <input type="password"
+                       name="password"
+                       id="inputPassword"
+                       class="login-input"
+                       placeholder="Veuillez entrer votre mot de passe"
+                       autocomplete="current-password"
+                       required>
+
+                <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+
+                <button type="submit" class="btn-connexion">Connexion</button>
+
+                <a href="#" class="lien-mot-de-passe">Mot de passe oublié ?</a>
+
+                <a href="{{ path('app_register') }}" class="btn-creer-compte">Créer un compte</a>
+
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un compte{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/creer_compte.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="creer-wrapper">
+
+        <div class="creer-header">
+            <div class="accueil-logo">
+                <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
+
+        <p class="creer-title">Créer un compte {{ role == 'admin' ? 'administrateur' : 'utilisateur' }}</p>
+
+        <div class="creer-card">
+            <form method="POST">
+                <div class="form-group">
+                    <label>Prénom</label>
+                    <input type="text" name="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label>Nom</label>
+                    <input type="text" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label>Pseudo</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <p class="creer-mdp-info">
+                    Le mot de passe par défaut sera : <strong>CesiZen123</strong>
+                </p>
+                <div class="form-footer">
+                    <a href="{{ path('app_gestion_compte') }}" class="btn-cancel">Annuler</a>
+                    <button type="submit" class="btn-save">Créer le compte</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
