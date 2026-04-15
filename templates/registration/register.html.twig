@@ -1,30 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Créer un compte - CesiZen{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <div class="register-page">
 
-    {{ form_errors(registrationForm) }}
+        <div class="register-logo">
+            <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo CesiZen">
+            <div class="register-logo-text">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe',
-            help: 'Minimum 12 caractères, avec majuscule, chiffre et caractère spécial.'
-        }) }}
-        {% if registrationForm.plainPassword.vars.errors|length > 0 %}
-            <ul class="form-errors">
-                {% for error in registrationForm.plainPassword.vars.errors %}
-                    <li style="color: red;">{{ error.message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="register-card">
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
-    <button class="btn btn-primary">
-        <a href="{{ path('app_login') }}" class="btn btn-primary">Retour</a>
-    </button>
+            <p class="register-title">Créer un compte</p>
+
+            {{ form_errors(registrationForm) }}
+
+            {{ form_start(registrationForm) }}
+
+            <div class="form-group">
+                {{ form_widget(registrationForm.email, {'attr': {'class': 'register-input', 'placeholder': 'Adresse e-mail'}}) }}
+                {{ form_errors(registrationForm.email) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'register-input', 'placeholder': 'Mot de passe'}}) }}
+                <p class="register-hint">Minimum 12 caractères, avec majuscule, chiffre et caractère spécial.</p>
+                {% if registrationForm.plainPassword.vars.errors|length > 0 %}
+                    {% for error in registrationForm.plainPassword.vars.errors %}
+                        <p class="register-error">{{ error.message }}</p>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="firstname" class="register-input" placeholder="Prénom" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="lastname" class="register-input" placeholder="Nom" required>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="username" class="register-input" placeholder="Pseudo" required>
+            </div>
+
+            <div class="form-group-check">
+                {{ form_widget(registrationForm.agreeTerms) }}
+                {{ form_label(registrationForm.agreeTerms) }}
+                {{ form_errors(registrationForm.agreeTerms) }}
+            </div>
+
+            <button type="submit" class="btn-inscription">Créer mon compte</button>
+
+            <a href="{{ path('app_login') }}" class="lien-retour">Déjà un compte ? Se connecter</a>
+
+            {{ form_end(registrationForm, {'render_rest': false}) }}
+
+        </div>
+    </div>
 {% endblock %}

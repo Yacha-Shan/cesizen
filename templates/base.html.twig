@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    <link rel="icon" href="{{ asset('images/logo_cesizen.png') }}">
     <link rel="stylesheet" href="{{ asset('css/menu.css') }}">
     {% block stylesheets %}{% endblock %}
     {% block javascripts %}
@@ -17,6 +17,31 @@
 <div class="menu-overlay" id="menu-overlay" onclick="fermerMenu()"></div>
 
 <nav class="menu-sidebar" id="menu-sidebar">
+
+    {# ===== PROFIL ===== #}
+    <div class="menu-profil">
+        {% if app.user %}
+            <div class="menu-profil-avatar {% if is_granted('ROLE_ADMIN') %}admin{% endif %}">
+                {% if app.user.avatar %}
+                    <img src="{{ asset('uploads/avatars/' ~ app.user.avatar) }}" alt="Photo de profil">
+                {% else %}
+                    <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+                    </svg>
+                {% endif %}
+            </div>
+            <div class="menu-profil-info">
+                {% if not is_granted('ROLE_ADMIN') %}
+                    <span class="menu-profil-pseudo">{{ app.user.username }}</span>
+                {% endif %}
+                <span class="menu-profil-nom">{{ app.user.firstname }} {{ app.user.lastname }}</span>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <span class="menu-profil-role">Administrateur</span>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
     <div class="menu-nav">
         <a href="{{ path('app_info') }}">
             <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.707 11.293l-8-8a1 1 0 0 0-1.414 0l-8 8a1 1 0 0 0 1.414 1.414L5 12.414V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7.586l.293.293a1 1 0 0 0 1.414-1.414zM13 19h-2v-4h2v4zm4 0h-2v-5a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v5H7v-8.586l5-5 5 5V19z"/></svg>

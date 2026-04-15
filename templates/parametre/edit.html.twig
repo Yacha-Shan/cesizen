@@ -2,41 +2,58 @@
 
 {% block title %}Modifier le mot de passe{% endblock %}
 
-{% block body %}
-    <div class="container">
-        <h1>Modifier le mot de passe</h1>
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/edit_password.css') }}">
+{% endblock %}
 
-        {# Affichage des messages flash #}
+{% block body %}
+    <div class="password-wrapper">
+
+        <div class="password-header">
+            <div class="accueil-logo">
+                <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
+
+        <p class="password-title">Modifier le mot de passe</p>
+
         {% for message in app.flashes('error') %}
-            <div class="alert alert-danger">{{ message }}</div>
+            <div class="flash-error">{{ message }}</div>
         {% endfor %}
         {% for message in app.flashes('success') %}
-            <div class="alert alert-success">{{ message }}</div>
+            <div class="flash-success">{{ message }}</div>
         {% endfor %}
 
-        {{ form_start(form) }}
+        <div class="password-card">
+            {{ form_start(form) }}
 
-        <div class="mb-3">
-            {{ form_label(form.currentPassword) }}
-            {{ form_widget(form.currentPassword, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(form.currentPassword) }}
+            <div class="form-group">
+                {{ form_label(form.currentPassword, 'Mot de passe actuel') }}
+                {{ form_widget(form.currentPassword, {'attr': {'class': 'form-input'}}) }}
+                {{ form_errors(form.currentPassword) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.newPassword.first, 'Nouveau mot de passe') }}
+                {{ form_widget(form.newPassword.first, {'attr': {'class': 'form-input'}}) }}
+                {{ form_errors(form.newPassword.first) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.newPassword.second, 'Confirmer le nouveau mot de passe') }}
+                {{ form_widget(form.newPassword.second, {'attr': {'class': 'form-input'}}) }}
+                {{ form_errors(form.newPassword.second) }}
+            </div>
+
+            <div class="form-footer">
+                <a href="{{ path('app_parametre_index') }}" class="btn-cancel">Annuler</a>
+                <button type="submit" class="btn-save">Modifier le mot de passe</button>
+            </div>
+
+            {{ form_end(form) }}
         </div>
 
-        <div class="mb-3">
-            {{ form_label(form.newPassword.first) }}
-            {{ form_widget(form.newPassword.first, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(form.newPassword.first) }}
-        </div>
-
-        <div class="mb-3">
-            {{ form_label(form.newPassword.second) }}
-            {{ form_widget(form.newPassword.second, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(form.newPassword.second) }}
-        </div>
-
-        <button type="submit" class="btn btn-primary">Modifier le mot de passe</button>
-        <a href="{{ path('app_parametre_index') }}" class="btn btn-secondary">Annuler</a>
-
-        {{ form_end(form) }}
     </div>
 {% endblock %}

@@ -3,127 +3,19 @@
 {% block title %}Gestion des comptes{% endblock %}
 
 {% block stylesheets %}
-    <style>
-        .gestion-wrapper {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-            font-family: sans-serif;
-        }
-
-        .gestion-title {
-            font-size: 22px;
-            font-weight: 600;
-            text-align: center;
-            color: #111;
-            margin-bottom: 2rem;
-        }
-
-        .gestion-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        @media (max-width: 700px) {
-            .gestion-grid { grid-template-columns: 1fr; }
-        }
-
-        .gestion-card {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 16px;
-            padding: 1.5rem;
-        }
-
-        .gestion-card-title {
-            font-size: 17px;
-            font-weight: 600;
-            text-align: center;
-            color: #111;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid #e5e5e5;
-            margin-bottom: 1rem;
-        }
-
-        .btn-ajouter {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 0.75rem;
-        }
-
-        .btn-ajouter a {
-            background: #f59e0b;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            line-height: 1;
-        }
-
-        .btn-ajouter a:hover { background: #d97706; }
-
-        .user-item {
-            border: 1px solid #e5e5e5;
-            border-radius: 10px;
-            padding: 0.75rem 1rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .user-item.inactif {
-            opacity: 0.5;
-        }
-
-        .user-nom {
-            font-size: 15px;
-            font-weight: 600;
-            color: #111;
-            margin-bottom: 0.4rem;
-        }
-
-        .user-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 13px;
-            flex-wrap: wrap;
-        }
-
-        .user-actions a {
-            text-decoration: none;
-            color: #555;
-        }
-
-        .user-actions a:hover { color: #111; }
-
-        .user-actions a.supprimer { color: #ef4444; font-weight: 500; }
-        .user-actions a.supprimer:hover { color: #b91c1c; }
-
-        .user-actions a.desactiver-actif { color: #555; }
-        .user-actions a.desactiver-inactif { color: #10b981; font-weight: 500; }
-
-        .flash-success {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #15803d;
-            padding: 10px 16px;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            font-size: 14px;
-            text-align: center;
-        }
-    </style>
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/gestion_compte.css') }}">
 {% endblock %}
 
 {% block body %}
     <div class="gestion-wrapper">
+
+        <div class="gestion-header">
+            <div class="accueil-logo">
+                <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
 
         <p class="gestion-title">Les différents utilisateurs :</p>
 
@@ -133,7 +25,6 @@
 
         <div class="gestion-grid">
 
-            {# Comptes utilisateurs #}
             <div class="gestion-card">
                 <p class="gestion-card-title">Comptes utilisateurs :</p>
                 <div class="btn-ajouter">
@@ -159,7 +50,6 @@
                 {% endfor %}
             </div>
 
-            {# Comptes administrateurs #}
             <div class="gestion-card">
                 <p class="gestion-card-title">Comptes administrateurs :</p>
                 <div class="btn-ajouter">

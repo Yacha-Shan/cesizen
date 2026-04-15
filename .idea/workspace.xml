@@ -4,12 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="Modification des premiers mois. Encore que le début">
-      <change afterPath="$PROJECT_DIR$/public/css/show_article.css" afterDir="false" />
+    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="Modification">
+      <change afterPath="$PROJECT_DIR$/public/css/creer_compte.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/edit_article.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/edit_password.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/exercice.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/gestion_compte.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/new_article.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/parametre.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/register.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/accueil.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/accueil.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/show_article.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/show_article.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/article/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/show.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/exercice/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/exercice/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gestion_compte/creer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion_compte/creer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gestion_compte/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion_compte/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/info/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/info/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/info/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/info/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/parametre/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parametre/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/parametre/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/parametre/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parametre/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +274,10 @@
       <workItem from="1773321964261" duration="37821000" />
       <workItem from="1774355216366" duration="2831000" />
       <workItem from="1775206155500" duration="316000" />
-      <workItem from="1775206692795" duration="16541000" />
+      <workItem from="1775206692795" duration="30774000" />
+      <workItem from="1776070551029" duration="12717000" />
+      <workItem from="1776149504405" duration="38000" />
+      <workItem from="1776236006095" duration="470000" />
     </task>
     <task id="LOCAL-00001" summary="Modification des premiers mois. Encore que le début">
       <option name="closed" value="true" />
@@ -263,7 +287,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773226926347</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Modification">
+      <option name="closed" value="true" />
+      <created>1775922167986</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1775922167986</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,6 +314,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Modification des premiers mois. Encore que le début" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification des premiers mois. Encore que le début" />
+    <MESSAGE value="Modification" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modification" />
   </component>
 </project>

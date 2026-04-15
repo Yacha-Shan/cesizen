@@ -71,12 +71,11 @@ body {
     background: #fff;
 }
 
-/* Navigation principale */
 .menu-nav {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    margin-top: 3rem;
+    margin-top: 1rem; /* était 3rem, réduit car le profil prend la place */
     flex: 1;
 }
 
@@ -148,7 +147,22 @@ body {
 @media (max-width: 768px) {
 
     /* Cacher le sidebar et le bouton hamburger sur mobile */
-    .menu-sidebar,
+    .menu-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 260px;
+        background: #1a3a2a;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        padding: 3.5rem 1rem 1.5rem; /* top augmenté pour laisser place au bouton hamburger */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto; /* au cas où le contenu dépasse */
+    }
+
     .menu-toggle,
     .menu-overlay {
         display: none !important;
@@ -208,4 +222,76 @@ body {
         overflow-x: hidden;
         width: 100%;
     }
+}
+
+/* ===== PROFIL dans le menu ===== */
+.menu-profil {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 0.5rem;
+    min-height: 72px;
+    margin-top: 1rem; /* ← ajouter cette ligne */
+}
+
+.menu-profil-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #2d6a4a;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.menu-profil-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.menu-profil-avatar svg {
+    width: 28px;
+    height: 28px;
+    fill: rgba(255,255,255,0.7);
+}
+
+.menu-profil-avatar.admin {
+    background: #4a5a2d;
+}
+
+.menu-profil-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+}
+
+.menu-profil-pseudo {
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.menu-profil-nom {
+    color: rgba(255,255,255,0.65);
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.menu-profil-role {
+    color: rgba(255,255,255,0.45);
+    font-size: 11px;
+    font-style: italic;
 }

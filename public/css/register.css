@@ -1,43 +1,55 @@
-.login-page {
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body:has(.register-page) .navbar,
+body:has(.register-page) nav,
+body:has(.register-page) header {
+    display: none;
+}
+
+.register-page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     margin: 0;
-    padding: 0;
+    padding: 2rem 1rem;
     font-family: sans-serif;
     background-color: #F4F9F6;
+    box-sizing: border-box;
 }
 
-.login-logo {
+.register-logo {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 1.5rem;
 }
 
-.login-logo img {
+.register-logo img {
     width: 100px;
     height: auto;
     margin-bottom: 0.5rem;
 }
 
-.login-logo-text {
+.register-logo-text {
     font-size: 28px;
     font-weight: 700;
     letter-spacing: 2px;
 }
 
-.login-logo-text span.cesi {
+.register-logo-text span.cesi {
     color: #02C466;
 }
 
-.login-logo-text span.zen {
+.register-logo-text span.zen {
     color: #FFDF54;
 }
 
-.login-card {
+.register-card {
     background: #d8f0e8;
     border-radius: 20px;
     padding: 3rem 3.5rem;
@@ -48,7 +60,7 @@
     align-items: center;
 }
 
-.login-title {
+.register-title {
     font-size: 32px;
     font-weight: 700;
     color: #1a3a2a;
@@ -56,7 +68,12 @@
     text-align: center;
 }
 
-.login-input {
+.form-group {
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+
+.register-input {
     width: 100%;
     padding: 16px 20px;
     border: 1.5px solid #b0d8c4;
@@ -64,21 +81,49 @@
     font-size: 15px;
     color: #333;
     background: #fff;
-    margin-bottom: 1.25rem;
     outline: none;
     box-sizing: border-box;
 }
 
-.login-input::placeholder {
+.register-input::placeholder {
     color: #aaa;
 }
 
-.login-input:focus {
+.register-input:focus {
     border-color: #02C466;
 }
 
-.btn-connexion {
-    width: 50%;
+.register-hint {
+    font-size: 12px;
+    color: #5a7a65;
+    margin: 6px 0 0 8px;
+}
+
+.register-error {
+    font-size: 12px;
+    color: #dc2626;
+    margin: 4px 0 0 8px;
+}
+
+.form-group-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    font-size: 13px;
+    color: #1a3a2a;
+}
+
+.form-group-check input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #02C466;
+    flex-shrink: 0;
+}
+
+.btn-inscription {
+    width: 60%;
     padding: 14px;
     background: #02C466;
     color: #fff;
@@ -87,60 +132,36 @@
     font-size: 18px;
     font-weight: 600;
     cursor: pointer;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;
     transition: background 0.2s;
-}
-
-.btn-connexion:hover {
-    background: #01a855;
-}
-
-.lien-mot-de-passe {
-    font-size: 13px;
-    color: #f59e0b;
-    text-decoration: underline;
-    margin-bottom: 1.25rem;
-    cursor: pointer;
-}
-
-.btn-creer-compte {
-    padding: 12px 32px;
-    background: #f59e0b;
-    color: #1a3a2a;
-    border: none;
-    border-radius: 50px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s;
-}
-
-.btn-creer-compte:hover {
-    background: #d97706;
-    color: #fff;
-}
-
-.alert-danger {
-    background: #fef2f2;
-    border: 1px solid #fecaca;
-    color: #dc2626;
-    padding: 10px 16px;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    font-size: 14px;
-    width: 100%;
+    display: block;
     text-align: center;
 }
 
-/* Neutralise les marges du body et du conteneur parent injecté par base.html.twig */
-body {
-    margin: 0;
-    padding: 0;
+.btn-inscription:hover {
+    background: #01a855;
 }
 
-body:has(.login-page) .navbar,
-body:has(.login-page) nav,
-body:has(.login-page) header {
-    display: none;
+.lien-retour {
+    font-size: 13px;
+    color: #f59e0b;
+    text-decoration: underline;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.lien-retour:hover {
+    color: #d97706;
+}
+
+@media (max-width: 600px) {
+    .register-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .btn-inscription {
+        width: 80%;
+    }
 }

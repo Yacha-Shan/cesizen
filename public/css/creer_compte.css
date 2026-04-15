@@ -1,0 +1,134 @@
+.creer-wrapper {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: sans-serif;
+}
+
+.creer-header {
+    margin-bottom: 2rem;
+}
+
+.accueil-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 52px;
+    font-weight: 700;
+}
+
+.accueil-logo img {
+    width: 95px;
+    height: 75px;
+}
+
+.accueil-logo .cesi {
+    color: #02C466;
+}
+
+.accueil-logo .zen {
+    color: #FFDF54;
+}
+
+.creer-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 1.5rem;
+}
+
+.creer-card {
+    background: #fff;
+    border: 1.5px solid #f0c060;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    font-size: 13px;
+    color: #666;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #111;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #22c55e;
+}
+
+.creer-mdp-info {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 0.5rem;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.btn-save {
+    padding: 8px 24px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #2d6a4a;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-save:hover {
+    background: #3a7d5a;
+}
+
+.btn-cancel {
+    padding: 8px 24px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: #fff;
+    color: #111;
+    text-decoration: none;
+}
+
+.btn-cancel:hover {
+    background: #f9fafb;
+}
+
+@media (max-width: 600px) {
+    .accueil-logo {
+        font-size: 20px;
+    }
+
+    .accueil-logo img {
+        width: 44px;
+        height: 44px;
+    }
+
+    .form-footer {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn-save,
+    .btn-cancel {
+        text-align: center;
+        width: 100%;
+    }
+}

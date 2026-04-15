@@ -3,170 +3,19 @@
 {% block title %}Mon profil{% endblock %}
 
 {% block stylesheets %}
-    <style>
-        * { box-sizing: border-box; }
-
-        body {
-            font-family: sans-serif;
-            background: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-
-        .profile-wrapper {
-            max-width: 600px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .profile-title {
-            font-size: 22px;
-            font-weight: 500;
-            margin: 0 0 2rem;
-            color: #111;
-        }
-
-        .profile-card {
-            background: #fff;
-            border: 1px solid #e5e5e5;
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-section-label {
-            font-size: 13px;
-            font-weight: 500;
-            color: #888;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin: 0 0 1rem;
-        }
-
-        .avatar-row {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .avatar-circle {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: #dbeafe;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 500;
-            font-size: 20px;
-            color: #1d4ed8;
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-
-        .avatar-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .avatar-upload-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 14px;
-            color: #111;
-            background: #fff;
-            cursor: pointer;
-        }
-
-        .avatar-upload-btn:hover {
-            background: #f9f9f9;
-        }
-
-        .avatar-hint {
-            font-size: 12px;
-            color: #999;
-            margin: 6px 0 0;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .form-group {
-            margin-bottom: 12px;
-        }
-
-        .form-group label {
-            font-size: 13px;
-            color: #666;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            font-size: 14px;
-            color: #111;
-            background: #fff;
-        }
-
-        .form-group input:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            background: #f5f5f5;
-        }
-
-        .field-hint {
-            font-size: 12px;
-            color: #aaa;
-            margin: 4px 0 0;
-        }
-
-        .form-footer {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 1.5rem;
-        }
-
-        .btn-save {
-            padding: 8px 24px;
-            font-size: 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            background: #fff;
-            color: #111;
-            cursor: pointer;
-        }
-
-        .btn-save:hover {
-            background: #f3f4f6;
-        }
-
-        .flash-success {
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            color: #15803d;
-            padding: 12px 16px;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            font-size: 14px;
-        }
-    </style>
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/parametre.css') }}">
 {% endblock %}
 
 {% block body %}
     <div class="profile-wrapper">
 
-        <p class="profile-title">Mon profil</p>
+        <div class="profile-header">
+            <div class="accueil-logo">
+                <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen">
+                <span class="cesi">CESI</span><span class="zen">ZEN</span>
+            </div>
+        </div>
 
         {% for message in app.flashes('success') %}
             <div class="flash-success">{{ message }}</div>
@@ -237,9 +86,6 @@
                 Modifier le mot de passe
             </a>
 
-            <button class="form-footer">
-                <a href="{{ path('app_info') }}" class="btn btn-primary">Retour</a>
-            </button>
             <div class="form-footer">
                 <button type="submit" class="btn-save">Sauvegarder</button>
             </div>
@@ -248,19 +94,6 @@
         {{ form_end(profileForm) }}
 
     </div>
-
-    <button class="btn btn-primary">
-        <a href="{{ path('app_info') }}" class="btn btn-primary">Accueil</a>
-    </button>
-    <button class="btn btn-primary">
-        <a href="{{ path('app_exercice') }}" class="btn btn-primary">Exercice respiration</a>
-    </button>
-
-    {% if is_granted('ROLE_ADMIN') %}
-        <button class="btn btn-primary">
-            <a href="{{ path('app_gestion_compte') }}" class="btn btn-primary">Gestion des comptes</a>
-        </button>
-    {% endif %}
 
     <script>
         const input = document.getElementById('{{ profileForm.avatarFile.vars.id }}');
