@@ -1,11 +1,3 @@
-.new-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 80vh;
-    padding: 2rem 1rem;
-}
-
 .new-page {
     display: flex;
     flex-direction: column;
@@ -157,4 +149,34 @@
 
 .brand-zen {
     color: #F0AE42;
+}
+
+/* Styles pour TinyMCE */
+.tox-tinymce {
+    border: 1.5px solid #d1d5db !important;
+    border-radius: 10px !important;
+    margin-top: 0.5rem !important;
+}
+
+.tox-tinymce:focus-within {
+    border-color: #22c55e !important;
+}
+
+.tox-wrapper {
+    border-radius: 10px !important;
+}
+
+/* Styles pour CKEditor */
+.ck-editor__editable {
+    border: 1.5px solid #d1d5db !important;
+    border-radius: 10px !important;
+    min-height: 260px !important;
+}
+
+.ck-editor__editable:focus {
+    border-color: #22c55e !important;
+}
+
+.ck.ck-editor__main>.ck-editor__editable {
+    border-radius: 10px !important;
 }

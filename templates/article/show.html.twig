@@ -8,26 +8,26 @@
 {% endblock %}
 
 {% block body %}
-    <div class="brand">
-        <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen" class="brand-logo">
-        <span class="brand-name">
-        <span class="brand-cesi">CESI</span><span class="brand-zen">ZEN</span>
-    </span>
-    </div>
+    <div class="show-page">
 
-    <div class="show-wrapper">
+        <div class="brand">
+            <img src="{{ asset('images/logo_cesizen.png') }}" alt="Logo Cesizen" class="brand-logo">
+            <span class="brand-name">
+                <span class="brand-cesi">CESI</span><span class="brand-zen">ZEN</span>
+            </span>
+        </div>
+
         <div class="show-card">
 
             <div class="show-field">
-                <span class="show-field-label">Titre de l'article : {{ article.title }}</span>
+                <span class="show-field-label">Titre de l'article :</span>
+                <h1 class="show-title">{{ article.title }}</h1>
                 <hr class="show-divider">
             </div>
 
             <div class="show-field">
                 <span class="show-field-label">Article :</span>
-                <div class="show-content-area">
-                    {{ article.content }}
-                </div>
+                <div class="show-content-area">{{ article.content|raw }}</div>
             </div>
 
             <div class="show-actions">
@@ -47,5 +47,3 @@
         </div>
     </div>
 {% endblock %}
-
-
