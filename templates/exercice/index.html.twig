@@ -36,6 +36,7 @@
         <div class="exercice-panel" id="panel">
             <p class="panel-title" id="panel-titre"></p>
             <p class="panel-desc" id="panel-desc"></p>
+            <p class="panel-detail" id="panel-detail"></p>
 
             <div class="cercle-wrapper">
                 <div class="cercle" id="cercle">
@@ -77,6 +78,7 @@
 
             document.getElementById('panel-titre').textContent = ex.nom;
             document.getElementById('panel-desc').textContent = ex.description;
+            document.getElementById('panel-detail').textContent = ex.detailCycle || '';
             document.getElementById('cercle-label').textContent = 'Prêt';
             document.getElementById('cercle-secondes').textContent = '';
             document.getElementById('cycle-info').textContent = `0 / ${ex.cycles} cycles`;

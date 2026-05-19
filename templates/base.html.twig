@@ -11,7 +11,7 @@
         {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
 </head>
-<body>
+<body class="{% if app.user %}user-connected{% else %}user-guest{% endif %}">
 
 {# ===== MENU SIDEBAR (desktop uniquement) ===== #}
 <div class="menu-overlay" id="menu-overlay" onclick="fermerMenu()"></div>

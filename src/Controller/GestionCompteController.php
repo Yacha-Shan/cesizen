@@ -17,19 +17,41 @@ final class GestionCompteController extends AbstractController
     #[Route('', name: 'app_gestion_compte')]
     public function index(UserRepository $userRepository): Response
     {
-        $utilisateurs = array_filter(
+        $users = array_filter(
             $userRepository->findAll(),
             fn(User $u) => !in_array('ROLE_ADMIN', $u->getRoles())
         );
 
-        $administrateurs = array_filter(
+        $utilisateursActifs = array_filter(
+            $users,
+            fn(User $u) => $u->isActive()
+        );
+
+        $utilisateursDesactives = array_filter(
+            $users,
+            fn(User $u) => !$u->isActive()
+        );
+
+        $admins = array_filter(
             $userRepository->findAll(),
             fn(User $u) => in_array('ROLE_ADMIN', $u->getRoles())
         );
 
+        $administrateursActifs = array_filter(
+            $admins,
+            fn(User $u) => $u->isActive()
+        );
+
+        $administrateursDesactives = array_filter(
+            $admins,
+            fn(User $u) => !$u->isActive()
+        );
+
         return $this->render('gestion_compte/index.html.twig', [
-            'utilisateurs' => array_values($utilisateurs),
-            'administrateurs' => array_values($administrateurs),
+            'utilisateursActifs' => array_values($utilisateursActifs),
+            'utilisateursDesactives' => array_values($utilisateursDesactives),
+            'administrateursActifs' => array_values($administrateursActifs),
+            'administrateursDesactives' => array_values($administrateursDesactives),
         ]);
     }
 

@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/show_article.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/article/show_article.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -30,18 +30,27 @@
                 <div class="show-content-area">{{ article.content|raw }}</div>
             </div>
 
-            <div class="show-actions">
-                <a href="{{ path('app_info') }}" class="btn-retour">Retour</a>
+            <div class="show-bottom-row">
+                <div class="show-actions">
+                    <a href="{{ path('app_info') }}" class="btn-retour">Retour</a>
 
-                {% if is_granted('ROLE_ADMIN') %}
-                    <a href="{{ path('app_article_edit', {id: article.id}) }}" class="btn-modifier">Modifier</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_article_edit', {id: article.id}) }}" class="btn-modifier">Modifier</a>
 
-                    <form method="post" action="{{ path('app_article_delete', {'id': article.id}) }}"
-                          onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
-                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
-                        <button type="submit" class="btn-supprimer">Supprimer</button>
-                    </form>
-                {% endif %}
+                        <form method="post" action="{{ path('app_article_delete', {'id': article.id}) }}"
+                              onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+                            <button type="submit" class="btn-supprimer">Supprimer</button>
+                        </form>
+                    {% endif %}
+                </div>
+
+                <div class="article-dates">
+                    <span>Créé le {{ article.createdAt|date('d-m-Y') }}</span>
+                    {% if article.updatedAt and article.updatedAt != article.createdAt %}
+                        <span class="article-date-modif">Modifié le {{ article.updatedAt|date('d-m-Y') }}</span>
+                    {% endif %}
+                </div>
             </div>
 
         </div>

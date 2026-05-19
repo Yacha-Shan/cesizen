@@ -146,7 +146,6 @@ body {
 
 @media (max-width: 768px) {
 
-    /* Cacher le sidebar et le bouton hamburger sur mobile */
     .menu-sidebar {
         position: fixed;
         top: 0;
@@ -168,7 +167,6 @@ body {
         display: none !important;
     }
 
-    /* Afficher le bottom nav */
     .bottom-nav {
         display: flex;
         position: fixed;
@@ -207,7 +205,6 @@ body {
         height: 22px;
     }
 
-    /* Correction page-content sur mobile */
     .page-content {
         padding-top: 1rem;
         padding-left: 0;
@@ -217,7 +214,6 @@ body {
         overflow-x: hidden;
     }
 
-    /* Empêche le body de déborder */
     body {
         overflow-x: hidden;
         width: 100%;
@@ -310,4 +306,46 @@ body:has(.register-page) .menu-overlay {
 body:has(.login-page) .page-content,
 body:has(.register-page) .page-content {
     padding-top: 0 !important;
+}
+
+/* ===== VERSION PLUS COMPACTE POUR LES INVITÉS ===== */
+body.user-guest .menu-sidebar {
+    padding-top: 2.25rem;
+}
+
+body.user-guest .menu-profil {
+    display: none;
+}
+
+body.user-guest .menu-nav {
+    margin-top: 1rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+body.user-guest .menu-footer {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+/* Mobile : même comportement compact pour les invités */
+@media (max-width: 768px) {
+    body.user-guest .menu-sidebar {
+        padding-top: 2.25rem;
+    }
+
+    body.user-guest .menu-profil {
+        display: none;
+    }
+
+    body.user-guest .menu-nav {
+        margin-top: 1rem;
+        padding-top: 0.85rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    body.user-guest .menu-footer {
+        margin-top: auto;
+        padding-top: 1rem;
+    }
 }
