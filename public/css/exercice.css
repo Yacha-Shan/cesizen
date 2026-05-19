@@ -120,7 +120,15 @@
 .panel-desc {
     font-size: 14px;
     color: #888;
-    margin-bottom: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.panel-detail {
+    font-size: 14px;
+    color: #5f6b68;
+    line-height: 1.6;
+    margin: 0 auto 2rem;
+    max-width: 700px;
 }
 
 .cercle-wrapper {
