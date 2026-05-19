@@ -97,4 +97,38 @@ final class ParametreController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/delete-account', name: 'app_parametre_delete_account', methods: ['POST'])]
+    public function deleteAccount(
+        Request $request,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $user = $this->getUser();
+
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        if (!$this->isCsrfTokenValid('delete_account_' . $user->getId(), $request->request->get('_token'))) {
+            $this->addFlash('error', 'Jeton de sécurité invalide.');
+            return $this->redirectToRoute('app_parametre_index');
+        }
+
+        if ($user->getAvatar()) {
+            $avatarPath = $this->getParameter('avatars_directory') . '/' . $user->getAvatar();
+            if (file_exists($avatarPath)) {
+                unlink($avatarPath);
+            }
+        }
+
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        $this->container->get('security.token_storage')->setToken(null);
+        $request->getSession()->invalidate();
+
+        $this->addFlash('success', 'Votre compte a été supprimé avec succès.');
+
+        return $this->redirectToRoute('app_login');
+    }
 }

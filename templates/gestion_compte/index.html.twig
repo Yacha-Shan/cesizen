@@ -25,56 +25,189 @@
 
         <div class="gestion-grid">
 
-            <div class="gestion-card">
-                <p class="gestion-card-title">Comptes utilisateurs :</p>
-                <div class="btn-ajouter">
-                    <a href="{{ path('app_gestion_compte_creer', {'role': 'user'}) }}" title="Ajouter un utilisateur">+</a>
-                </div>
-                {% for user in utilisateurs %}
-                    <div class="user-item {{ not user.isActive ? 'inactif' }}">
-                        <p class="user-nom">{{ user.firstname }} {{ user.lastname }}</p>
-                        <div class="user-actions">
-                            <a href="{{ path('app_gestion_compte_desactiver', {'id': user.id}) }}"
-                               class="{{ user.isActive ? 'desactiver-actif' : 'desactiver-inactif' }}">
-                                {{ user.isActive ? 'Désactiver' : 'Activer' }}
-                            </a>
-                            <a href="{{ path('app_gestion_compte_supprimer', {'id': user.id}) }}"
-                               class="supprimer"
-                               onclick="return confirm('Supprimer ce compte ?')">
-                                Supprimer
-                            </a>
-                        </div>
+            <div class="gestion-left-column">
+                <div class="gestion-card">
+                    <p class="gestion-card-title">Comptes utilisateurs actifs : {{ utilisateursActifs|length }}</p>
+                    <div class="btn-ajouter">
+                        <a href="{{ path('app_gestion_compte_creer', {'role': 'user'}) }}" title="Ajouter un utilisateur">+</a>
                     </div>
-                {% else %}
-                    <p style="font-size:13px;color:#aaa;text-align:center;">Aucun utilisateur</p>
-                {% endfor %}
+
+                    {% for user in utilisateursActifs %}
+                        <div class="user-item">
+                            <p class="user-nom">{{ user.username }} - {{ user.firstname }} {{ user.lastname }}</p>
+                            <div class="user-actions">
+                                <a href="{{ path('app_gestion_compte_desactiver', {'id': user.id}) }}"
+                                   class="desactiver-actif">
+                                    Désactiver
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="supprimer user-delete-open"
+                                    data-delete-url="{{ path('app_gestion_compte_supprimer', {'id': user.id}) }}"
+                                    data-delete-message="Supprimer ce compte ?"
+                                >
+                                    Supprimer
+                                </button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p style="font-size:13px;color:#aaa;text-align:center;">Aucun utilisateur actif</p>
+                    {% endfor %}
+                </div>
+
+                <div class="gestion-card">
+                    <p class="gestion-card-title">Comptes utilisateurs désactivés : {{ utilisateursDesactives|length }}</p>
+
+                    {% for user in utilisateursDesactives %}
+                        <div class="user-item inactif">
+                            <p class="user-nom">{{ user.username }} - {{ user.firstname }} {{ user.lastname }}</p>
+                            <div class="user-actions">
+                                <a href="{{ path('app_gestion_compte_desactiver', {'id': user.id}) }}"
+                                   class="desactiver-inactif">
+                                    Activer
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="supprimer user-delete-open"
+                                    data-delete-url="{{ path('app_gestion_compte_supprimer', {'id': user.id}) }}"
+                                    data-delete-message="Supprimer ce compte ?"
+                                >
+                                    Supprimer
+                                </button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p style="font-size:13px;color:#aaa;text-align:center;">Aucun utilisateur désactivé</p>
+                    {% endfor %}
+                </div>
             </div>
 
-            <div class="gestion-card">
-                <p class="gestion-card-title">Comptes administrateurs :</p>
-                <div class="btn-ajouter">
-                    <a href="{{ path('app_gestion_compte_creer', {'role': 'admin'}) }}" title="Ajouter un administrateur">+</a>
-                </div>
-                {% for user in administrateurs %}
-                    <div class="user-item {{ not user.isActive ? 'inactif' }}">
-                        <p class="user-nom">{{ user.firstname }} {{ user.lastname }}</p>
-                        <div class="user-actions">
-                            <a href="{{ path('app_gestion_compte_desactiver', {'id': user.id}) }}"
-                               class="{{ user.isActive ? 'desactiver-actif' : 'desactiver-inactif' }}">
-                                {{ user.isActive ? 'Désactiver' : 'Activer' }}
-                            </a>
-                            <a href="{{ path('app_gestion_compte_supprimer', {'id': user.id}) }}"
-                               class="supprimer"
-                               onclick="return confirm('Supprimer ce compte ?')">
-                                Supprimer
-                            </a>
-                        </div>
+            <div class="gestion-right-column">
+                <div class="gestion-card">
+                    <p class="gestion-card-title">Comptes administrateurs actifs : {{ administrateursActifs|length }}</p>
+                    <div class="btn-ajouter">
+                        <a href="{{ path('app_gestion_compte_creer', {'role': 'admin'}) }}" title="Ajouter un administrateur">+</a>
                     </div>
-                {% else %}
-                    <p style="font-size:13px;color:#aaa;text-align:center;">Aucun administrateur</p>
-                {% endfor %}
+
+                    {% for user in administrateursActifs %}
+                        <div class="user-item">
+                            <p class="user-nom">{{ user.username }} - {{ user.firstname }} {{ user.lastname }}</p>
+                            <div class="user-actions">
+                                <a href="{{ path('app_gestion_compte_desactiver', {'id': user.id}) }}"
+                                   class="desactiver-actif">
+                                    Désactiver
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="supprimer user-delete-open"
+                                    data-delete-url="{{ path('app_gestion_compte_supprimer', {'id': user.id}) }}"
+                                    data-delete-message="Supprimer ce compte ?"
+                                >
+                                    Supprimer
+                                </button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p style="font-size:13px;color:#aaa;text-align:center;">Aucun administrateur actif</p>
+                    {% endfor %}
+                </div>
+
+                <div class="gestion-card">
+                    <p class="gestion-card-title">Comptes administrateurs désactivés : {{ administrateursDesactives|length }}</p>
+
+                    {% for user in administrateursDesactives %}
+                        <div class="user-item inactif">
+                            <p class="user-nom">{{ user.username }} - {{ user.firstname }} {{ user.lastname }}</p>
+                            <div class="user-actions">
+                                <a href="{{ path('app_gestion_compte_desactiver', {'id': user.id}) }}"
+                                   class="desactiver-inactif">
+                                    Activer
+                                </a>
+
+                                <button
+                                    type="button"
+                                    class="supprimer user-delete-open"
+                                    data-delete-url="{{ path('app_gestion_compte_supprimer', {'id': user.id}) }}"
+                                    data-delete-message="Supprimer ce compte ?"
+                                >
+                                    Supprimer
+                                </button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <p style="font-size:13px;color:#aaa;text-align:center;">Aucun administrateur désactivé</p>
+                    {% endfor %}
+                </div>
             </div>
 
         </div>
+
+        <div class="delete-modal" id="deleteModal" aria-hidden="true">
+            <div class="delete-modal__overlay" data-close-delete-modal></div>
+            <div class="delete-modal__content" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+                <h2 class="delete-modal__title" id="deleteModalTitle">Confirmation de suppression</h2>
+                <p class="delete-modal__text" id="deleteModalText">Voulez-vous vraiment supprimer cet élément ?</p>
+
+                <div class="delete-modal__actions">
+                    <button type="button" class="delete-modal__cancel" data-close-delete-modal>Annuler</button>
+                    <button type="button" class="delete-modal__confirm" id="deleteModalConfirm">Supprimer</button>
+                </div>
+            </div>
+        </div>
+
+        <form id="delete-user-form" method="post" action="" style="display:none;">
+            <input type="hidden" name="_token" value="">
+        </form>
+
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('deleteModal');
+            const modalText = document.getElementById('deleteModalText');
+            const confirmBtn = document.getElementById('deleteModalConfirm');
+            const deleteForm = document.getElementById('delete-user-form');
+            const tokenInput = deleteForm ? deleteForm.querySelector('input[name="_token"]') : null;
+
+            if (!modal || !modalText || !confirmBtn || !deleteForm || !tokenInput) {
+                return;
+            }
+
+            let currentAction = '';
+
+            document.querySelectorAll('.user-delete-open').forEach(button => {
+                button.addEventListener('click', () => {
+                    currentAction = button.dataset.deleteUrl || '';
+                    modalText.textContent = button.dataset.deleteMessage || 'Voulez-vous vraiment supprimer cet élément ?';
+                    modal.classList.add('is-visible');
+                    modal.setAttribute('aria-hidden', 'false');
+                });
+            });
+
+            document.querySelectorAll('[data-close-delete-modal]').forEach(element => {
+                element.addEventListener('click', () => {
+                    modal.classList.remove('is-visible');
+                    modal.setAttribute('aria-hidden', 'true');
+                });
+            });
+
+            confirmBtn.addEventListener('click', () => {
+                if (!currentAction) return;
+
+                deleteForm.action = currentAction;
+                tokenInput.value = '';
+                deleteForm.submit();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    modal.classList.remove('is-visible');
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
+        });
+    </script>
 {% endblock %}

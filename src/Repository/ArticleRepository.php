@@ -16,6 +16,14 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    public function findAllOrderedByMostRecentDate(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('CASE WHEN a.updatedAt > a.createdAt THEN a.updatedAt ELSE a.createdAt END', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Article[] Returns an array of Article objects
     //     */

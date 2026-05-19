@@ -21,6 +21,10 @@
             <div class="flash-success">{{ message }}</div>
         {% endfor %}
 
+        {% for message in app.flashes('error') %}
+            <div class="flash-error">{{ message }}</div>
+        {% endfor %}
+
         {{ form_start(profileForm, {'attr': {'enctype': 'multipart/form-data'}}) }}
 
         <div class="profile-card">
@@ -42,7 +46,7 @@
                     </div>
                     <p class="avatar-hint" id="file-label">JPG, PNG ou WEBP — max 2 Mo</p>
                     {% for error in profileForm.avatarFile.vars.errors %}
-                        <p style="color: red; font-size: 12px; margin: 4px 0 0;">{{ error.message }}</p>
+                        <p class="field-error">{{ error.message }}</p>
                     {% endfor %}
                 </div>
             </div>
@@ -56,14 +60,14 @@
                     {{ form_label(profileForm.firstname, 'Prénom') }}
                     {{ form_widget(profileForm.firstname) }}
                     {% for error in profileForm.firstname.vars.errors %}
-                        <p style="color: red; font-size: 12px; margin: 4px 0 0;">{{ error.message }}</p>
+                        <p class="field-error">{{ error.message }}</p>
                     {% endfor %}
                 </div>
                 <div class="form-group">
                     {{ form_label(profileForm.lastname, 'Nom') }}
                     {{ form_widget(profileForm.lastname) }}
                     {% for error in profileForm.lastname.vars.errors %}
-                        <p style="color: red; font-size: 12px; margin: 4px 0 0;">{{ error.message }}</p>
+                        <p class="field-error">{{ error.message }}</p>
                     {% endfor %}
                 </div>
             </div>
@@ -72,7 +76,7 @@
                 {{ form_label(profileForm.username, 'Pseudo') }}
                 {{ form_widget(profileForm.username) }}
                 {% for error in profileForm.username.vars.errors %}
-                    <p style="color: red; font-size: 12px; margin: 4px 0 0;">{{ error.message }}</p>
+                    <p class="field-error">{{ error.message }}</p>
                 {% endfor %}
             </div>
 
@@ -82,39 +86,113 @@
                 <p class="field-hint">L'email ne peut pas être modifié.</p>
             </div>
 
-            <a href="{{ path('app_parametre_edit_password') }}" class="btn btn-warning">
-                Modifier le mot de passe
-            </a>
+            <div class="profile-actions">
+                <a href="{{ path('app_parametre_edit_password') }}" class="btn-secondary">
+                    Modifier le mot de passe
+                </a>
 
-            <div class="form-footer">
                 <button type="submit" class="btn-save">Sauvegarder</button>
             </div>
         </div>
 
         {{ form_end(profileForm) }}
 
+        <div class="profile-card danger-card">
+            <p class="card-section-label">Compte</p>
+            <div class="danger-content">
+                <div>
+                    <p class="danger-title">Supprimer mon compte</p>
+                    <p class="danger-text">
+                        Cette action est définitive. Votre compte et ses données associées seront supprimés.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-delete-open"
+                    data-delete-message="Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible."
+                >
+                    Supprimer mon compte
+                </button>
+            </div>
+        </div>
+
+        <div class="delete-modal" id="deleteModal" aria-hidden="true">
+            <div class="delete-modal__overlay" data-close-delete-modal></div>
+            <div class="delete-modal__content" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle">
+                <h2 class="delete-modal__title" id="deleteModalTitle">Confirmation de suppression</h2>
+                <p class="delete-modal__text" id="deleteModalText">Voulez-vous vraiment supprimer votre compte ?</p>
+
+                <div class="delete-modal__actions">
+                    <button type="button" class="delete-modal__cancel" data-close-delete-modal>Annuler</button>
+                    <button type="button" class="delete-modal__confirm" id="deleteModalConfirm">Supprimer</button>
+                </div>
+            </div>
+        </div>
+
+        <form id="delete-account-form" method="post" action="{{ path('app_parametre_delete_account') }}" style="display:none;">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete_account_' ~ user.id) }}">
+        </form>
+
     </div>
 
     <script>
-        const input = document.getElementById('{{ profileForm.avatarFile.vars.id }}');
-        const preview = document.getElementById('avatar-preview');
-        const label = document.getElementById('file-label');
+        document.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('{{ profileForm.avatarFile.vars.id }}');
+            const preview = document.getElementById('avatar-preview');
+            const label = document.getElementById('file-label');
 
-        input.addEventListener('change', function () {
-            const file = this.files[0];
-            if (!file) return;
-            if (file.size > 2 * 1024 * 1024) {
-                label.textContent = 'Fichier trop volumineux (max 2 Mo)';
-                label.style.color = 'red';
+            if (input) {
+                input.addEventListener('change', function () {
+                    const file = this.files[0];
+                    if (!file) return;
+                    if (file.size > 2 * 1024 * 1024) {
+                        label.textContent = 'Fichier trop volumineux (max 2 Mo)';
+                        label.style.color = 'red';
+                        return;
+                    }
+                    label.textContent = file.name;
+                    label.style.color = '#999';
+                    const reader = new FileReader();
+                    reader.onload = e => {
+                        preview.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;">';
+                    };
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            const modal = document.getElementById('deleteModal');
+            const modalText = document.getElementById('deleteModalText');
+            const confirmBtn = document.getElementById('deleteModalConfirm');
+            const deleteForm = document.getElementById('delete-account-form');
+
+            if (!modal || !modalText || !confirmBtn || !deleteForm) {
                 return;
             }
-            label.textContent = file.name;
-            label.style.color = '#999';
-            const reader = new FileReader();
-            reader.onload = e => {
-                preview.innerHTML = '<img src="' + e.target.result + '" style="width:100%;height:100%;object-fit:cover;">';
-            };
-            reader.readAsDataURL(file);
+
+            document.querySelector('.btn-delete-open')?.addEventListener('click', (event) => {
+                modalText.textContent = event.currentTarget.dataset.deleteMessage || 'Voulez-vous vraiment supprimer votre compte ?';
+                modal.classList.add('is-visible');
+                modal.setAttribute('aria-hidden', 'false');
+            });
+
+            document.querySelectorAll('[data-close-delete-modal]').forEach(element => {
+                element.addEventListener('click', () => {
+                    modal.classList.remove('is-visible');
+                    modal.setAttribute('aria-hidden', 'true');
+                });
+            });
+
+            confirmBtn.addEventListener('click', () => {
+                deleteForm.submit();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    modal.classList.remove('is-visible');
+                    modal.setAttribute('aria-hidden', 'true');
+                }
+            });
         });
     </script>
 {% endblock %}
