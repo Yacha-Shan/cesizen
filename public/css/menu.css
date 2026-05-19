@@ -75,7 +75,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    margin-top: 1rem; /* était 3rem, réduit car le profil prend la place */
+    margin-top: 1rem;
     flex: 1;
 }
 
@@ -157,10 +157,10 @@ body {
         z-index: 100;
         display: flex;
         flex-direction: column;
-        padding: 3.5rem 1rem 1.5rem; /* top augmenté pour laisser place au bouton hamburger */
+        padding: 3.5rem 1rem 1.5rem;
         transform: translateX(-100%);
         transition: transform 0.3s ease;
-        overflow-y: auto; /* au cas où le contenu dépasse */
+        overflow-y: auto;
     }
 
     .menu-toggle,
@@ -233,7 +233,7 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.1);
     margin-bottom: 0.5rem;
     min-height: 72px;
-    margin-top: 1rem; /* ← ajouter cette ligne */
+    margin-top: 1rem;
 }
 
 .menu-profil-avatar {
@@ -294,4 +294,20 @@ body {
     color: rgba(255,255,255,0.45);
     font-size: 11px;
     font-style: italic;
+}
+
+/* Masquer le menu sur les pages de login et register */
+body:has(.login-page) .menu-toggle,
+body:has(.login-page) .menu-sidebar,
+body:has(.login-page) .menu-overlay,
+body:has(.register-page) .menu-toggle,
+body:has(.register-page) .menu-sidebar,
+body:has(.register-page) .menu-overlay {
+    display: none !important;
+}
+
+/* Ajuster le padding sur les pages de login et register */
+body:has(.login-page) .page-content,
+body:has(.register-page) .page-content {
+    padding-top: 0 !important;
 }

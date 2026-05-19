@@ -4,33 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="Modification">
-      <change afterPath="$PROJECT_DIR$/public/css/creer_compte.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/edit_article.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/edit_password.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/exercice.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/gestion_compte.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/new_article.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/parametre.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/register.css" afterDir="false" />
+    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="Finalisation du fonctionnement du projet">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/data_sources_history.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/accueil.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/accueil.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/edit_article.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/edit_article.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/menu.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/new_article.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/new_article.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/show_article.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/show_article.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/article/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/exercice/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/exercice/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gestion_compte/creer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion_compte/creer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/gestion_compte/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestion_compte/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/info/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/templates/info/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/info/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/info/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/parametre/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parametre/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/parametre/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/parametre/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/parametre/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="1_make_authentification" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -215,34 +199,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/yacha/PhpstormProjects/cesizen/templates/security&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "dev",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/yacha/PhpstormProjects/cesizen/templates/security",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;,
-      &quot;mysql&quot;,
-      &quot;mysql_aurora&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql",
+      "mysql",
+      "mysql_aurora"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\yacha\PhpstormProjects\cesizen\templates\security" />
@@ -277,7 +261,8 @@
       <workItem from="1775206692795" duration="30774000" />
       <workItem from="1776070551029" duration="12717000" />
       <workItem from="1776149504405" duration="38000" />
-      <workItem from="1776236006095" duration="470000" />
+      <workItem from="1776236006095" duration="6546000" />
+      <workItem from="1776280761754" duration="14863000" />
     </task>
     <task id="LOCAL-00001" summary="Modification des premiers mois. Encore que le début">
       <option name="closed" value="true" />
@@ -295,7 +280,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775922167986</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Finalisation du fonctionnement du projet">
+      <option name="closed" value="true" />
+      <created>1776236532851</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1776236532851</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +308,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Modification des premiers mois. Encore que le début" />
     <MESSAGE value="Modification" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modification" />
+    <MESSAGE value="Finalisation du fonctionnement du projet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finalisation du fonctionnement du projet" />
   </component>
 </project>

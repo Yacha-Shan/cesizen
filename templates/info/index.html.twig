@@ -47,7 +47,9 @@
                         {% endif %}
                     </div>
 
-                    <p class="article-contenu">{{ article.content }}</p>
+                    <p class="article-contenu">
+                        {{ article.content|striptags|slice(0, 150) }}{% if article.content|striptags|length > 150 %}...{% endif %}
+                    </p>
 
                     <div class="article-footer">
                         <a href="{{ path('app_article_show', {id: article.id}) }}" class="lien-voir-plus">Voir plus</a>
