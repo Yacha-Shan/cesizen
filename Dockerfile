@@ -24,9 +24,11 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 
 RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-RUN mkdir -p /var/www/html/var/cache /var/www/html/var/log
-RUN chown -R www-data:www-data /var/www/html/var
-RUN chmod -R 777 /var/www/html/var
+RUN mkdir -p /var/www/html/var/cache/prod \
+             /var/www/html/var/cache/test \
+             /var/www/html/var/log \
+    && chown -R www-data:www-data /var/www/html \
+    && chmod -R 777 /var/www/html/var
 
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
