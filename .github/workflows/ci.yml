@@ -64,9 +64,15 @@ jobs:
       - name: Lint du container de services
         run: php bin/console lint:container --env=test
 
+
+      - name: Création de la base de test
+        env:
+            APP_ENV: test
+        run: php bin/console doctrine:database:create --env=test --if-not-exists
+
       - name: Application des migrations sur la base de test
         env:
-          APP_ENV: test
+            APP_ENV: test
         run: php bin/console doctrine:migrations:migrate --no-interaction --env=test
 
       - name: Exécution des tests (PHPUnit)
