@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="Changement avec test">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/reference.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/reference.php" afterDir="false" />
+    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="Changement - enlever le mot test qui apparait sur l'écrant titre">
+      <change beforePath="$PROJECT_DIR$/templates/info/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/info/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,23 +54,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0035569202355985" />
-      <entry key="MS500" value="1.4923938504403003" />
-      <entry key="S2" value="3.5366276867123005" />
-      <entry key="S5" value="5.675458721274378" />
-      <entry key="S10" value="7.175020685521444" />
-      <entry key="S30" value="9.899643209196611" />
-      <entry key="S60" value="11.832967933844245" />
-      <entry key="M2" value="13.466870981522595" />
-      <entry key="M5" value="14.841806229326446" />
-      <entry key="M10" value="15.39262614702159" />
-      <entry key="M15" value="15.588482386486179" />
-      <entry key="M30" value="15.821315113787628" />
-      <entry key="H1" value="16.800822785991024" />
-      <entry key="H2" value="20.89219177132928" />
-      <entry key="H4" value="27.527636332701782" />
-      <entry key="D1" value="39.43363867526841" />
-      <entry key="W1" value="42.459147421660916" />
+      <entry key="MS100" value="1.0000000064413144" />
+      <entry key="MS500" value="1.0247215435318857" />
+      <entry key="S2" value="1.6964968144092811" />
+      <entry key="S5" value="2.62053106401278" />
+      <entry key="S10" value="3.2431227871391743" />
+      <entry key="S30" value="6.867044301033642" />
+      <entry key="S60" value="12.891954111787625" />
+      <entry key="M2" value="19.246091870988806" />
+      <entry key="M5" value="25.23530701486677" />
+      <entry key="M10" value="29.275198496256365" />
+      <entry key="M15" value="32.085935270291486" />
+      <entry key="M30" value="36.97451833791027" />
+      <entry key="H1" value="41.4005693873181" />
+      <entry key="H2" value="47.32220374659385" />
+      <entry key="H4" value="55.116174791617134" />
+      <entry key="D1" value="68.84607299476367" />
+      <entry key="W1" value="72.36843439542045" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -94,23 +92,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9107693566559539" />
-      <entry key="MS500" value="1.463704335855207" />
-      <entry key="S2" value="3.5182884388385087" />
-      <entry key="S5" value="5.662774522093522" />
-      <entry key="S10" value="7.166686491023218" />
-      <entry key="S30" value="9.893925228415046" />
-      <entry key="S60" value="11.826447590596795" />
-      <entry key="M2" value="13.46103499363489" />
-      <entry key="M5" value="14.838361816241555" />
-      <entry key="M10" value="15.390655543750231" />
-      <entry key="M15" value="15.587107634082379" />
-      <entry key="M30" value="15.820594917060044" />
-      <entry key="H1" value="16.800443800107217" />
-      <entry key="H2" value="20.891975755064678" />
-      <entry key="H4" value="27.52750779845738" />
-      <entry key="D1" value="39.43361118193521" />
-      <entry key="W1" value="42.45914327430764" />
+      <entry key="MS100" value="0.7631296091630249" />
+      <entry key="MS500" value="0.9704569685785586" />
+      <entry key="S2" value="1.6613085513610408" />
+      <entry key="S5" value="2.589134309286885" />
+      <entry key="S10" value="3.2212621564894843" />
+      <entry key="S30" value="6.857279577318119" />
+      <entry key="S60" value="12.886253869960104" />
+      <entry key="M2" value="19.242880389287816" />
+      <entry key="M5" value="25.233846780553378" />
+      <entry key="M10" value="29.27422644900286" />
+      <entry key="M15" value="32.08510265677226" />
+      <entry key="M30" value="36.97391083017367" />
+      <entry key="H1" value="41.40017675930571" />
+      <entry key="H2" value="47.32195950252981" />
+      <entry key="H4" value="55.116025548372434" />
+      <entry key="D1" value="68.84604065231188" />
+      <entry key="W1" value="72.36842950715341" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="$PROJECT_DIR$/../../../../Program Files/PHP/php.exe">
@@ -337,7 +335,7 @@
       <workItem from="1782477259277" duration="868000" />
       <workItem from="1782638922587" duration="404000" />
       <workItem from="1782640569465" duration="2341000" />
-      <workItem from="1783331189873" duration="11933000" />
+      <workItem from="1783331189873" duration="12801000" />
     </task>
     <task id="LOCAL-00001" summary="Modification des premiers mois. Encore que le début">
       <option name="closed" value="true" />
@@ -363,7 +361,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776236532851</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Changement - enlever le mot test qui apparait sur l'écrant titre">
+      <option name="closed" value="true" />
+      <created>1783429360810</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1783429360810</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,6 +390,7 @@
     <MESSAGE value="Modification des premiers mois. Encore que le début" />
     <MESSAGE value="Modification" />
     <MESSAGE value="Finalisation du fonctionnement du projet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finalisation du fonctionnement du projet" />
+    <MESSAGE value="Changement - enlever le mot test qui apparait sur l'écrant titre" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changement - enlever le mot test qui apparait sur l'écrant titre" />
   </component>
 </project>
