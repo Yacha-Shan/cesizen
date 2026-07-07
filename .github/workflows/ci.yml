@@ -73,10 +73,14 @@ jobs:
             APP_ENV: test
         run: php bin/console doctrine:database:create --env=test --if-not-exists
 
-      - name: Application des migrations sur la base de test
+      - name: Construction du schéma sur la base de test
+        # NOTE : l'historique des migrations du projet ne recrée pas encore l'intégralité
+        # du schéma depuis une base vide (seules deux migrations incrémentales existent).
+        # En attendant une migration de baseline complète, le schéma de la base de test
+        # est construit directement depuis le mapping Doctrine pour ce pipeline de CI.
         env:
             APP_ENV: test
-        run: php bin/console doctrine:migrations:migrate --no-interaction --env=test
+        run: php bin/console doctrine:schema:update --force --env=test
 
       - name: Exécution des tests (PHPUnit)
         env:
