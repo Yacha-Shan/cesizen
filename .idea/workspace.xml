@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="Remise au propre total">
+    <list default="true" id="f900d5ef-f727-47c3-a30a-bb56000f25f0" name="Changes" comment="Ajout d'un TEST">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/info/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/info/index.html.twig" afterDir="false" />
     </list>
@@ -55,23 +55,23 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0000000000000002" />
-      <entry key="S60" value="1.000000046463" />
-      <entry key="M2" value="1.000610475255416" />
-      <entry key="M5" value="1.2085908267153687" />
-      <entry key="M10" value="3.181835479146738" />
-      <entry key="M15" value="6.59450765381925" />
-      <entry key="M30" value="17.172020211490572" />
-      <entry key="H1" value="30.339234894826987" />
-      <entry key="H2" value="43.488966525651534" />
-      <entry key="H4" value="56.23619808057181" />
-      <entry key="D1" value="76.13681242039394" />
-      <entry key="W1" value="81.10999968600923" />
+      <entry key="MS100" value="1.0160540931156286" />
+      <entry key="MS500" value="1.6666992376921872" />
+      <entry key="S2" value="3.3222958010033357" />
+      <entry key="S5" value="4.384032826235657" />
+      <entry key="S10" value="5.014113828244491" />
+      <entry key="S30" value="5.615029673764634" />
+      <entry key="S60" value="5.799015569936428" />
+      <entry key="M2" value="5.897825205852585" />
+      <entry key="M5" value="6.161526231003042" />
+      <entry key="M10" value="8.132445967831298" />
+      <entry key="M15" value="11.53177039441361" />
+      <entry key="M30" value="22.094384598438413" />
+      <entry key="H1" value="35.27158683567298" />
+      <entry key="H2" value="48.440741055345775" />
+      <entry key="H4" value="61.2051054293489" />
+      <entry key="D1" value="81.12981428323546" />
+      <entry key="W1" value="86.1089351200588" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -93,23 +93,23 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.2871745887492588" />
-      <entry key="MS500" value="0.7791645796604998" />
-      <entry key="S2" value="0.9395227492140118" />
-      <entry key="S5" value="0.9753554615276419" />
-      <entry key="S10" value="0.9876008614453725" />
-      <entry key="S30" value="0.9958497530944583" />
-      <entry key="S60" value="0.9979227654540674" />
-      <entry key="M2" value="0.9995712422920363" />
-      <entry key="M5" value="1.2081671903067117" />
-      <entry key="M10" value="3.181574348724175" />
-      <entry key="M15" value="6.59425660799683" />
-      <entry key="M30" value="17.171730688324953" />
-      <entry key="H1" value="30.338960601375003" />
-      <entry key="H2" value="43.48875537191242" />
-      <entry key="H4" value="56.23605457166857" />
-      <entry key="D1" value="76.13677844550037" />
-      <entry key="W1" value="81.10999447176245" />
+      <entry key="MS100" value="0.9412562804867806" />
+      <entry key="MS500" value="1.6386685806290417" />
+      <entry key="S2" value="3.3058805779835723" />
+      <entry key="S5" value="4.371115691488344" />
+      <entry key="S10" value="5.004191021065506" />
+      <entry key="S30" value="5.610316908696488" />
+      <entry key="S60" value="5.796421002222141" />
+      <entry key="M2" value="5.896462413228198" />
+      <entry key="M5" value="6.160956973344364" />
+      <entry key="M10" value="8.132109815308143" />
+      <entry key="M15" value="11.531469222580016" />
+      <entry key="M30" value="22.09407016855288" />
+      <entry key="H1" value="35.27130005270759" />
+      <entry key="H2" value="48.440523587064575" />
+      <entry key="H4" value="61.20495872597922" />
+      <entry key="D1" value="81.12977976591392" />
+      <entry key="W1" value="86.10892982794687" />
     </decayedShown>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="$PROJECT_DIR$/../../../../Program Files/PHP/php.exe">
@@ -336,7 +336,7 @@
       <workItem from="1782477259277" duration="868000" />
       <workItem from="1782638922587" duration="404000" />
       <workItem from="1782640569465" duration="2341000" />
-      <workItem from="1783331189873" duration="13626000" />
+      <workItem from="1783331189873" duration="14414000" />
     </task>
     <task id="LOCAL-00001" summary="Modification des premiers mois. Encore que le début">
       <option name="closed" value="true" />
@@ -378,7 +378,15 @@
       <option name="project" value="LOCAL" />
       <updated>1783430665021</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Ajout d'un TEST">
+      <option name="closed" value="true" />
+      <created>1783432301573</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1783432301573</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,6 +409,7 @@
     <MESSAGE value="Finalisation du fonctionnement du projet" />
     <MESSAGE value="Changement - enlever le mot test qui apparait sur l'écrant titre" />
     <MESSAGE value="Remise au propre total" />
-    <option name="LAST_COMMIT_MESSAGE" value="Remise au propre total" />
+    <MESSAGE value="Ajout d'un TEST" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout d'un TEST" />
   </component>
 </project>
